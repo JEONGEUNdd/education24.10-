@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼으로 매개변수 전달</title>
+</head>
+<body>
+    <h1 id="alter">Change Colors</h1>
+    <button onclick="change('red')">red</button>
+    <button onclick="change('blue')">blue</button>
+    <button onclick="change('yellow')">yellow</button>
+    <button onclick="change('purple')">purple</button>
+    <script>
+        function change(colors){
+            const alter=document.getElementById("alter");
+            alter.style.color=colors; //선택한 요소의 텍스트 색상을 매개변수로 받은 색상으로 변경
+        }
+    </script>
+</body>
+</html>

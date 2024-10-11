@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch조건문(break X)</title>
+</head>
+<body>
+    <script>
+        let coupon=parseInt(prompt("패키지 번호를 입력하세요"));
+        document.write("패키지: " +coupon+ "번<hr>");
+        switch(coupon){
+            case 1:
+                document.write("돌고래쇼"); //break없어서 이후 case2랑 default실행
+            case 2:
+                document.write("놀이기구 10종");
+            default:
+                document.write("입장권");
+        }
+    </script>
+</body>
+</html>

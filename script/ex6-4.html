@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비교 연산자, 논리 연산자</title>
+</head>
+<body>
+    <script>
+        let jud;
+        jud=2<3;
+        document.write("2<3: " +jud+ "<hr>");
+        jud=2>3;
+        document.write("2>3: " +jud+ "<hr>");
+        jud=1==true;
+        document.write("1==true: " +jud+ "<hr>");
+        jud=0===false;  //===은 type까지 고려
+        document.write("1==true:" +jud);
+        document.write("true && true: " + (true&&true) + "<hr>");
+        document.write("false && true: " + (false&&true) + "<hr>");
+        document.write("false || true: " + (true||true) +"<hr>");
+        document.write("!false: " +!false);
+    </script>
+</body>
+</html> 

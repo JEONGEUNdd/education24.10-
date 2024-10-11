@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch조건문(break)</title>
+</head>
+<body>
+    <script>
+        let coupon=parseInt(prompt("쿠폰 개수를 입력하시오."));
+        document.write("쿠폰: " +coupon+ "장<hr>");
+        coupon=Math.floor(coupon/10);
+        switch(coupon){
+            case 2:
+                document.write("여행 가방");  
+                break;  //break써줘서 한번만 실행
+            case 1:
+                document.write("다이어리");
+                break;
+            default:
+                document.write("커피 한 잔");
+        }
+    </script>
+    
+</body>
+</html>
