@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드롭박스에서 값 읽기</title>
+    <link rel="stylesheet" href="style_js.css">
+</head>
+<body>
+    <p>키우고 싶은 동물은</p>
+    <select id="myOption">
+        <option value="dog">개</option>
+        <option value="cat">고양이</option>
+        <option value="duck">오리</option>
+        <option value="koala">코알라</option>
+    </select>
+    <input type="button" value="클릭" onClick="getSelect()"><hr>
+    <h2 id="result"></h2>   //사용자가 선택한 동물의 값을 표시
+    <script>
+        function getSelect(){
+            const index=document.getElementById("myOption").selectedIndex;
+            const st=document.getElementById("myOption").options[index].value;
+            document.getElementById("result").innerHTML=st;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML요소변경</title>
+</head>
+<body>
+    <body style="text-align:center">
+        <p>문자열 회전</p>
+        <h1 id="rotate" style="color:blue">Programming</h1><hr>
+        <img id="image" src="/html_basic/images/photo1.jpg"><br>
+        <input type="button" value="Change" onClick="changeImage()"><hr>
+        <p>스타일 변경하기</p>
+        <div id="box" style="width:300px; height:300px; margin:auto"></div>
+
+        <script>
+            const rotate=document.getElementById("rotate");
+            function rotateString(){
+                const text=rotate.textContent;
+                const firstChar=text[0];
+                const rotatedText=text.slice(1)+firstChar;
+                rotate.textContent=rotatedText;
+            };
+            setInterval(rotateString,500);
+
+
+            let toggle=1;
+            function changeImage(){
+                if(++toggle%2==0)
+                document.getElementById("image").src="/html_basic/images/photo2.jpg";
+                else
+                document.getElementById("image").src="/html_basic/images/photo1.jpg";
+            }
+
+            const letters="0123456789ABCDEF";
+            let color="#";
+            let count=1;
+            let intervalID=setInterval(changeColor,250);
+            function changeColor(){
+                if(++count>50)
+                    clearInterval(intervalID);
+                for (let k=0; k<6; k++)
+                color=color+letters[Math.floor(Math.random()*16)];
+            document.getElementById("box").style.backgroundColor=color;
+            document.getElementById("box").style.borderRadius=`${count}%`;  //모서리 둥글게 %로 설정
+            color="#";
+            }
+        </script>
+</body>
+</html>

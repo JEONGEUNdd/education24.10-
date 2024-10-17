@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string객체의 메서드 사용</title>
+</head>
+<body>
+    <script>
+        const s1 = new String("Web ");
+        const s2 = "Programming";
+        document.write(`s1="${s1}"<br>`);
+        document.write(`s2="${s2}"<br>`);
+
+        document.write(`s1.charAt(0): ${s1.charAt(0)}<hr>`); //첫문자(W)반환
+        document.write(`s1.concat(s2): ${s1.concat(s2)}<hr>`);  //s1과 s2연결
+        document.write(`s1.indexOf("i"): ${s1.indexOf("i")}<hr>`);
+        document.write(`s2.replace("m", "M"): ${s2.replace("m", "M")}<hr>`);
+        document.write(`s2.search("m"): ${s2.search("m")}<hr>`); //"m"의 위치를 반환
+        document.write(`s2.split("a"): ${s2.split("a")}<hr>`); //a"를 기준으로 나누기
+        document.write(`s2.substr(0, 4): ${s2.substr(0, 4)}<hr>`);
+        document.write(`s2.substring(3, 7): ${s2.substring(3, 7)}<hr>`);
+        document.write(`s2.slice(3, -1): ${s2.slice(3, -1)}<hr>`); // 3번째부터 끝에서 한 글자를 제외한 부분을 반환
+        document.write(`s2.toLowerCase(): ${s2.toLowerCase()}<hr>`); //소문자 변환
+        document.write(`s2.toUpperCase(): ${s2.toUpperCase()}<hr>`);
+        document.write(`s1.trim(): ${s1.trim()}<hr>`);  //공백제거
+    </script>
+</body>
+</html>
+       

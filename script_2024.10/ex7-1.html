@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전역객체 메서드</title>
+</head>
+<body>
+    <script>
+        const jud=window.confirm("confirm()에서 window.가 생략된 것을 이해했나요?"); //사용자의 확인을 요구하는 대화 상자를 표시 사용자가 "확인"을 클릭하면 true, "취소"를 클릭하면 false를 반환
+        document.write("전역객체 속성 이해했음: " +jud+ "<hr>");
+        document.write("isNaN(1)= "+isNaN(1)+ jud+ "<hr>");
+        document.write("isNaN('0.5')=" +isNaN('0.5')+"<hr>");
+        document.write("isNaN('str')=" +isNaN('str')+"<hr>");
+        document.write("isNaN('3*4')=" + eval(3*4));
+    </script>
+</body>
+</html>

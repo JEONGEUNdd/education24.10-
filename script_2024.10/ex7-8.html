@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무작위로 배경색 바꾸기</title>
+</head>
+<body>
+    <script>
+        const letters="0123456789ABCDEF";
+        let color="#";  //색상을 초기화하여 다음 색상을 생성할 때 새롭게 시작
+        let count=1;
+        let intervalID=setInterval(changeColor,1000);
+        function changeColor(){
+            if(++count >25)
+                clearInterval(intervalID);
+            for (let k=0; k<6; k++)
+                color+=letters[Math.floor(Math.random()*16)];  //무작위로 6자리의 16진수 색상 코드 생성
+            document.write("<div style='background-color:" +color+ "'>" +color +"</div>");
+            color="#";
+        }
+    </script>
+</body>
+</html>
