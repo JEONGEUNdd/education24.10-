@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .faq-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .faq-item h3 {
+            cursor: pointer;
+        }
+        .faq-item h3:hover {
+            color: red;
+        }
+        .answer {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-item">
+        <h3 onclick="toggleAnswer(this)">질문 1: 어떻게 등록하나요?</h3>
+        <p class="answer">답변: 등록은 홈페이지 상단의 등록 버튼을 클릭하시면 됩니다.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3 onclick="toggleAnswer(this)">질문 2:주문은 어떻게 하나요?</h3>
+        <p class="answer">답변: 상품 페이지에서 장바구니에 추가 후 결제하시면 됩니다. </p>
+    </div>
+
+    <script>
+        function toggleAnswer(element){
+            const answer=element.nextElementSibling;
+            answer.style.color='blue'
+            answer.style.fontsize='25px'
+            answer.style.display=answer.style.display
+            answer.style.display=answer.style.display
+            ==='block' ? 'none' :'block';
+        }
+    </script>
+</body>
+</html>
