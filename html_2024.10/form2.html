@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 만들기</title>
+    <style>
+        h1{text-align:center;}
+        body{background-color:rgb(243, 244, 234);}
+        .question{margin-top: 10px; margin-left: 20px;}
+        .button{margin-left:200px;}
+    </style>
+</head>
+<body>
+        <h1>취향 조사 폼</h1>  <!--form은 맨앞, 맨뒤 한번씩만 써야함-->
+        <form name="frm" action="http://jeongeun.pul.kr" method="post">
+        이름: <input type="text" name="name" placeholder="이름을 입력하세요">  <!--placeholder은 박스 안 회색글씨 예시 적혀있는거-->
+        전화번호: <input type="number" name="number" placeholder="전화번호를 입력하세요"><br>
+
+        <div class="question">   <!--div class 지정해서 head부분에서 style로 꾸미기 가능(여백 등)-->
+       <p>1. 가장 선호하는 계절은?<br><input type="radio" name="season" value="1">봄
+        <input type="radio" name="season" value="2">여름   <!--name꼭 지정해야함 이름은 마음대로 가능-->
+        <input type="radio" name="season" value="3">가을
+        <input type="radio" name="season" value="4">겨울
+        <input type="radio" name="season" value="5">없음<br></p>
+
+        <p>2. 좋아하는 음식종류는?<br> <input type="radio" name="food" value="1" >한국음식
+        <input type="radio" name="food" value="1">한국음식
+        <input type="radio" name="food" value="2">중국음식
+        <input type="radio" name="food" value="3">일본음식
+        <input type="radio" name="food" value="4">서양음식
+        <input type="radio" name="food" value="5">없음<br></p>
+        
+        <p>3. 가장 좋아하는 스포츠는?<br> <input type="radio" name="sport" value="1" name="food">축구
+        <input type="radio" name="sport" value="2">농구
+        <input type="radio" name="sport" value="3">테니스
+        <input type="radio" name="sport" value="4">수영
+        <input type="radio" name="sport" value="5">없음<br></p>
+
+        <p>4. 좋아하는 영화 장르는?<br> <input type="radio" name="movie" value="1">액션
+        <input type="radio" name="movie" value="2">코미디
+        <input type="radio" name="movie" value="3">드라마
+        <input type="radio" name="movie" value="4">공포
+        <input type="radio" name="movie" value="5">없음<br></p>
+
+        <p>5. 선호하는 음악장르는?<br> <input type="radio" name="music" value="1">팝
+        <input type="radio" name="music" value="2">록
+        <input type="radio" name="music" value="3">재즈
+        <input type="radio" name="music" value="4">클래식
+        <input type="radio" name="music" value="5">없음<br></p>
+
+        <p>6. 여행하고 싶은 나라는?<br> <input type="radio" name="country" value="1">한국
+        <input type="radio" name="country" value="2">이탈리아
+        <input type="radio" name="country" value="3">일본
+        <input type="radio" name="country" value="4">미국
+        <input type="radio" name="country" value="5">스위스
+        <input type="radio" name="country" value="6">없음<br></p>
+
+        <p>7. 가장 좋아하는 음료는?<br> <input type="radio" name="drink" value="1">커피
+        <input type="radio" name="drink" value="2">차
+        <input type="radio" name="drink" value="3">주스
+        <input type="radio" name="drink" value="4">탄산음료
+        <input type="radio" name="drink" value="5">없음<br></p>
+
+        <p>8. 가장 좋아하는 책 장르는?<br> <input type="radio" name="book" value="1">소설
+            <input type="radio" name="book" value="2">비소설
+            <input type="radio" name="book" value="3">판타지
+            <input type="radio" name="book" value="4">미스터리
+            <input type="radio" name="book" value="5">없음<br></p>
+
+         <p>9. 선호하는 취미는?<br> <input type="radio" name="hobby" value="1">독서
+            <input type="radio" name="hobby" value="2">스포츠
+            <input type="radio" name="hobby" value="3">음악감상
+            <input type="radio" name="hobby" value="4">여행
+            <input type="radio" name="hobby" value="5">없음<br></p>
+
+         <p>10. 좋아하는 TV프로그램은?<br> <input type="radio" name="tv" value="1">드라마
+            <input type="radio" name="tv" value="2">리얼리티
+            <input type="radio" name="tv" value="3">뉴스
+            <input type="radio" name="tv" value="4">다큐멘터리
+            <input type="radio" name="tv" value="5">없음<br></p>
+        </div>
+        <div class="button">
+        <button type="submit">제출하기</button>
+        </div>
+    </form>
+</body>
+</html>
