@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display:flex;
+            justify-content:center;  /*flex사용할때 정렬은 justify-content사용 */
+            align-items:center;
+            height:100vh;
+            margin:0;
+            background-color:lightgray;
+        }
+        .container{
+            display:flex;
+            flex-wrap:wrap; /*크기조정 */
+            justify-items:center;
+            align-items:center;
+            width:80%;
+            background-color:white;
+            padding:20px;
+            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+            border-radius:8px;
+        }
+        .item{
+            flex:1 1 30%;   /*1이면 자동정렬*/
+            margin:10px;
+            padding:20px;
+            background-color:blue;
+            color:white;
+            border-radius:5px;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">아이템1</div>
+        <div class="item">아이템2</div>
+        <div class="item">아이템3</div>
+    </div>
+</body>
+</html>

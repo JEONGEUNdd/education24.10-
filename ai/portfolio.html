@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>임정은 Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h3 {
+            margin-top: 20px;
+            color: #135d8f;
+        }
+        p {
+            line-height: 1.6;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .menu {
+            display: flex; 
+            justify-content: space-around; 
+            background-color: rgb(173, 189, 218); 
+            padding: 8px 0; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px 0; 
+        }
+        .menu a {
+            flex: 1; 
+            text-align: center; 
+            padding: 10px; 
+            transition: background-color 0.3s; 
+            color: white; 
+        }
+        .menu a:hover {
+            background-color: #135d8f;; 
+        }
+        .section {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #ffffff; 
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .section ul {
+            padding-left: 20px;
+        }
+        #contact-info {
+            display: flex; 
+            align-items: flex-start; 
+            margin-top: 20px;
+            margin-bottom: 20px; /* 섹션들과 구분하기 위한 여백 추가 */
+        }
+        h1 {
+            color: #2c3e50; 
+            font-size: 36px; 
+            text-align: center; 
+            letter-spacing: 2px; 
+            font-weight: bold; 
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); 
+            margin-top: 20px; 
+            padding-bottom: 10px; 
+            border-bottom: 2px solid #135d8f;
+        }
+        .highlight {
+            color: #351c89; 
+        }
+        img {
+            width: 150px; 
+            height: auto; 
+            margin-right: 20px; 
+        }
+        .contact-details {
+            flex: 1; 
+        }
+        .contact-details p {
+            margin: 5px 0; 
+        }
+    </style>
+</head>
+<body>
+    <h1>안녕하세요 <span class="highlight">꼼꼼함과 정확함을 추구하는</span> 임정은입니다.</h1>
+    
+    <div id="contact-info">
+        <img src="취업사진.jpg" alt="임정은 사진">
+        <div class="contact-details">
+            <p style font-size:30px; margin-top:10px;>생년월일: 2000.00.00</p> 
+            <p>전화번호: 010-0000-0000</p> 
+            <p>이메일: wjddm@naver.com</p>
+            <p><a href="https://github.com/JEONGEUNdd" target="_blank">GitHub 링크</a></p>
+        </div>
+    </div>
+
+    <div class="menu">
+        <a href="#" onclick="toggleSection('intro')">소개</a>
+        <a href="#" onclick="toggleSection('tech')">기술</a>
+        <a href="#" onclick="toggleSection('experience')">경험</a>
+        <a href="#" onclick="toggleSection('Project')">프로젝트</a>
+    </div>
+    
+    <div id="Project" class="section">
+        <h3>프로젝트</h3>
+        <p>R과 Python을 활용한 다양한 데이터 분석 프로젝트를 진행했습니다.</p>
+        <ul>
+            <li><strong>서울시 음주운전 단속 추천리스트</strong></li>
+            <li><strong>2020 주식 분석을 통한 투자 전략 도출</strong></li>
+            <li><strong>항공사 만족도에 영향을 미치는 요인 분석</strong></li>
+        </ul>
+    </div>
+
+    <div id="intro" class="section" style="display: block;"> 
+        <h3>학력사항</h3>
+        <p>2019.03~2024.08 가천대학교 졸업</p>
+        <p>2017.03~2019.02 동광고등학교 졸업</p>
+        <h3>경력사항</h3>
+        <p>2021.10~2021.12 미래농업포럼 데이터라벨링 업무 참여</p>
+        <h3>직무관련 경험</h3>
+        <ul>
+            <li>R, Python 활용 데이터 분석 프로젝트 3회 참여</li>
+            <li>미국 하와이주립대학교 어학연수 참여</li>
+            <li>한옥숙박업 운영 전년도 대비 매출 47% 증가</li>
+            <li>2024.04 아이티윌 Python 기초역량 시각화 과정 이수</li>
+            <li>2024.10~2025.04 세종교육 AI 데이터분석 과정 이수</li>
+        </ul>
+        <h3>자격사항</h3>
+        <ul>
+            <li>2023.0 Toeic Speaking IH급 </li>
+            <li>2023.07 컴퓨터활용능력 1급</li>
+            <li>2021.06 사회조사분석사 2급</li>
+        </ul>
+    </div>
+
+    <div id="tech" class="section">
+        <h3>기술</h3>
+        <p>표로 만들어서 R,Python,html에서 세부 패키지 적기</p>
+    </div>
+
+    <div id="experience" class="section">
+        <h3>경험</h3>
+        <p>여기 경험 관련 내용을 작성합니다.</p>
+    </div>
+
+    <script>
+        function toggleSection(sectionId) {
+            // Hide all sections first
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

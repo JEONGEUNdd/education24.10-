@@ -1,0 +1,76 @@
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh; /*전체 화면 높이 */
+    }
+    header {
+        background: #a9e59d;
+        color: black;
+        padding: 10px;
+        text-align: center;
+        position: fixed; /*상단 고정*/
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    footer {
+        background: #a9e59d;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        position: fixed; /*하단 고정 */
+        bottom: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .content {
+        flex: 1; /*남은 공간을 차지*/
+        padding: 60px 10px 50px; /*상단과 하단 고정 요소에 여백 추가*/
+        overflow-y: auto; /*세로 스크롤 가능*/ 
+    }
+    a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #48c9b0; 
+            color: white;
+            padding: 10px 20px;  
+            margin: 10px 0; 
+            border-radius: 5px;  
+            font-size: 15px; 
+    }
+    a:hover {
+            background-color: #1abc9c; 
+    }
+    p {
+            margin: 0 0 15px;
+    }
+</style>
+<header>
+    html 실습파일
+</header>
+<div class="content">
+    <h1>2024년 10월 html</h1>
+    <p><a href="/table.html">table만들기</a></p>
+    <p><a href="/table2.html">table만들기2</a></p>
+    <p><a href="/text.shadow.html">텍스트 그림자</a></p>
+    <p><a href="/textcolor.html">텍스트 색깔</a></p>
+    <p><a href="/animation.html">애니메이션 효과</a></p>
+    <p><a href="/form.html">폼 만들기</a></p>
+    <p><a href="/form2.html">폼 만들기2</a></p>
+    <p><a href="/report.html">보고서 만들기</a></p>
+    <p><a href="/margin.html">margin 속성값 조절</a></p>
+    <p><a href="/layout,media.html">레이아웃</a></p>
+    <p><a href="/문단나누기.html">문단 나누기1</a></p>
+    <p><a href="/문단나누기2.html">문단 나누기2</a></p>
+    <p><a href="/outlinestyle.html">문단 나누기2</a></p>
+    <p><a href="/flexbox.html">flex 설정</a></p>
+    <p><a href="/navigationbar.html">네비게이션바</a></p>
+    <p><a href="/dropdown.html">드롭다운</a></p>
+</div>
+<footer>
+    2024 HTML Practice
+</footer>
