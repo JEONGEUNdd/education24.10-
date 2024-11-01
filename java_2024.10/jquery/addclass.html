@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+        .highlight{
+            background-color:yellow;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 lang="en">안녕하세요</h1>
+    <p lang="ko">이 문장은 한국어로 작성되었습니다.</p>
+    <p lang="en">This sentence is written in English.</p>
+    <p lang="ko">또 다른 한국어 문장입니다.</p>
+    <script>
+        $(document).ready(function(){
+            $(':lang(ko)').addClass('highlight')
+        }); 
+    </script>
+</body>
+</html>

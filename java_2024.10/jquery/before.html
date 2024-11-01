@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>before()메소드</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    
+    <script>
+        $(function(){
+            $("button").on("click",function(){
+                $("#firstRow").before("<tr><td>새로운 행1이에요!</td><td>새로운 행1이에요!</td></tr>")
+            });
+        });   //after은 뒤로 추가함
+    </script>
+</head>
+<body>
+    <h1>.before()메소드</h1>
+    <table border="1" style="border-collapse: collapse;">
+        <tr id="firstRow">
+            <td>첫 번째 셀이에요!</td>
+            <td>두 번째 셀이에요!</td>
+        </tr>
+    </table>
+    <button>행 추가</button>
+</body>
+</html>

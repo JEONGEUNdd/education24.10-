@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            background-color:lightgray;
+            padding:70px;
+            align-items: center;   /* 상하정렬 */
+            justify-content: center;  /*좌우정렬  justify-content랑 height는 세트로 같이 써야함 */
+            height: 100vh;
+        }
+
+        .container{
+            display: block;
+            width:250px;
+            padding:50px;
+            background-color:white;
+        }
+        
+        #btn{
+            background-color:rgb(67, 180, 67);
+            margin-top:10px;    
+            border:none;
+            padding: 10px;
+            width: 100px;
+            cursor:pointer;
+            
+        }
+
+        #name,#password{
+            width:250px;
+            height:30px;
+        }
+
+        #password{
+            margin-top:5px;
+        }
+        
+    </style>
+</head> 
+<body>
+    <div class="container">
+    <form id="myform" onsubmit="return handleSubmit(event)">     
+        <h2>로그인</h2>   
+        <input type="text" id="name" placeholder="아이디" required><br>
+        <input type="password" id="password" placeholder="비밀번호" required><br>
+        <input type="submit" id="btn" value="로그인">
+    </form>
+    </div>
+    
+    <script>
+        function handleSubmit(event){
+            var id = "wjddms";
+            var pwd = "0000";
+
+            event.preventDefault();  
+
+            const name1=document.getElementById('name').value;  //위의 id이름인 name으로 그대로 해도 되고 name1으로 바꿔도 됨
+            const password1=document.getElementById('password').value;
+
+            if (id==name1) {
+                if(pwd == password1){        
+                    alert(name1+`님을 환영합니다.`);
+                    location.href="/이름제출.html";
+                }else{
+                    alert(`계정정보가 일치하지 않습니다.`);
+                }
+            } else {
+                alert(`계정정보가 일치하지 않습니다.`);
+            }
+        }
+    </script>
+    
+</body>
+</html>

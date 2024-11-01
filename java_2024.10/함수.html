@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 함수</title>
+</head>
+<body>
+    <h1>자바스크립트 함수</h1>
+    <script>
+        function addNum(x,y){
+            document.write(x+y);
+            return x+y;
+        }
+        addNum(3,7);
+        document.write("<br>");
+        //document.write(addNum(2,3));
+
+        function sqr(x,y){
+            return x**y
+        }
+        document.write(sqr(5,4));
+        document.write("<br>");
+
+        var sqr2= function(x,y){
+            return x**y;
+        }
+        document.write(sqr2(5,2));
+        document.write("<br>");
+
+        var sqr3=(x,y) => x**y;   //화살표함수
+        //  (x,y) => {x**y}
+        document.write(sqr2(5,5));
+        document.write("<br>");
+
+        var score=[80,90,70];
+
+        function sum(dat){
+            var res=dat.map(x=>x**2);
+            return res;
+        }
+        console.log(sum(score));
+
+        
+
+
+
+
+
+
+    </script>
+</body>
+</html>

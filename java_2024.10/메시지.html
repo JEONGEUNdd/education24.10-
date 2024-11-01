@@ -1,0 +1,51 @@
+<script>
+    // const userResponse=confirm("메시지를 입력하세요.");
+    // console.log(userResponse);
+
+    // const delYN=confirm("삭제하시겠습니까?");
+    // if(delYN) console.log("정상적으로 삭제되었습니다.");
+    // else console.log("삭제가 취소되었습니다.");
+
+    // const userInput=prompt("숫자를 입력하세요:");
+    // //console.log(userInput);
+    // if (userInput===null){
+    //     alert("사용자가 입력을 취소했습니다.");
+    // } else {
+    //     alert("입력한 숫자: " +userInput);
+    // }
+
+    // const name=prompt("이름을 입력하세요:");
+    // alert(`안녕하세요, ${name}님`);
+
+    // const num1=parseFloat(prompt("첫 번째 숫자를 입력하세요:"));
+    // const num2=parseInt(prompt("두 번째 숫자를 입력하세요:"));
+    // const sum=num1+num2;
+    // alert(`두 숫자의 합은 ${num1}+${num2}=${sum}입니다.`);
+
+    const num1=parseFloat(prompt("첫 번째 숫자를 입력하세요:"));
+    const num2=parseFloat(prompt("두 번째 숫자를 입력하세요:"));
+    const operation=prompt("원하는 연산을 입력하세요(+,-,*,/");
+
+    let result;
+
+    switch(operation){
+        case '+':
+            result=num1+num2;
+            break;
+        case '-':
+            result=num1-num2;
+            break;
+        case '*':
+            result=num1*num2;
+            break;
+        case  '/':
+            result=num1/num2;
+            break;
+        default:
+            alert("유효하지 않은 값입니다.");
+            break;
+    }
+    if(result !==undefined){
+        alert("결과: " +result);
+    }
+</script>

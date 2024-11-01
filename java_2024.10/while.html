@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while문</title>
+</head>
+<body>
+    <script>
+        var i=1, j=1;
+        while (i>3){
+            document.write("i: " +(i++)+ "<br>");
+        }
+
+        do{
+            document.write("j: " +(j++)+ "<br>");
+        } while (j>3);
+
+        var arr=[3,4,5];
+        for (var i=0; i<arr.length; i++){
+            document.write(i+ " ");
+        }
+        document.write("<br>");
+
+        for (var i in arr){  //위 코드랑 같음
+            document.write(i + " ");
+        }
+    </script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+        .container * {   /*   *:모든 요소들 선택 */
+            display: block;
+            padding:5px;
+            border:1px solid gray;
+            margin:15px;
+        }
+  
+    </style>
+    <script>
+        $(function(){
+            $("button").on("click",function(){
+                $("h4").siblings().css({"border":"2px solid red"});//형제요소 모두 선택
+                //$("h4").prevAll("div") div빼고 그전까지
+                //$("h4").nextUntil("div")
+                //$("h4").prevUntil("div")  
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>.sibling()메소드</h1>
+    <div class="container">
+        <div>div 요소</div>
+        <h2>h2요소</h2>
+        <h3>h3요소</h3>
+        <h4>h4요소</h4>
+        <h5>h5요소</h5>
+        <h6>h2요소</h6>
+        <p>p요소</p>
+    </div>
+    <button>h4의 형제 요소</button>
+    </div>
+</body>
+</html>

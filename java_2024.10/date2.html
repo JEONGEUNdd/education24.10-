@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const now=new Date();
+        const year=now.getFullYear();
+        const month=now.getMonth();
+        const mothDays=[31,28,31,30,31,30,31,31,30,31,30,31];
+        if (month===1 && ((year%4===0 && year%100!=0)||(year1 %400===0))){monthDays[month]=29;  //2월이 윤년인지 체크
+        }
+
+        //Date객체
+        const now=new Date();
+        const year=now.getFullYear();
+        const month=now.getMonth();
+        const date=now.getDate();
+        const firstDay=new Date(year,month,1);
+        const firstDayofWeek=firstDay.getDay();
+        const lastDay=new Date(year,month+1,0);
+        const daysInMonth=lastDay.getDate();
+
+    </script>
+</body>
+</html>

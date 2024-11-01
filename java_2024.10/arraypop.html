@@ -1,0 +1,174 @@
+<script>
+
+//배열추가 push
+    let fruits=['apple','banana'];
+    console.log(fruits);
+    fruits.push('cherry');   //마지막에 값 추가
+    console.log(fruits); 
+    fruits.push('orange');  
+    
+//pop,shift   배열삭제 
+    var ret=fruits.pop();  //마지막 값 삭제하며 그 값 출력
+    console.log(fruits);
+    console.log(ret);
+
+    var ret2=fruits.shift();  //맨 앞 값 삭제하며 그 값 출력
+    console.log(fruits);
+    console.log(ret2);
+
+    fruits.unshift("melon");  //맨 앞 추가
+    console.log(fruits);
+
+
+//shift:맨 앞 값 삭제
+    const arr4=[1,2,3,4];
+    const Arr4=arr4.shift();   
+    console.log(arr4);    //[2,3,4]
+    console.log(Arr4);    //1
+
+//unshift 맨 앞에 값 추가
+    const arr5=[2,3,4];
+    arr5.unshift(1);    //[1,2,3,4] 
+    console.log(arr5);
+
+//splice  중간에서 삭제하거나 추가
+    fruits.splice(1,1,"water melon");   //1인덱스 위치에 1개 지우고 water melon넣음
+    fruits.splice(1,0,"water melon"); //0이라 삭제 안하고 추가만
+    console.log(fruits);
+
+    fruits.push('banana');
+    fruits.push('orange');
+    console.log(fruits);
+
+//slice 
+    var ret3=fruits.slice(1,3);  //slice는 원본에 변화X, 잘라서 다른배열 만들기
+    console.log(fruits);
+    console.log(ret3);
+
+    fruits.forEach(function(str){
+        console.log(str);
+    });
+
+//화살표함수 =>
+    let numbers=[1,2,3];
+    numbers.forEach(num=> {     //화살표함수 ()=>  function()
+        console.log(num*2);   //아래코드랑 같음
+    });
+
+    let numbers2=[1,2,3];
+    numbers.forEach(function(num){   //num=>   function(num)
+        console.log(num*2);
+    });
+
+//map
+    let numbers3=[1,2,3];
+    let ret4=numbers3.map(num=>num*3);  //map은 배열의 요소를 변환
+    console.log(ret4);
+
+//filter
+    let numbers4=[1,2,3,4,5];
+    let ret5=numbers4.filter(num=>num%2===0); //filter:조건을 만족하는 요소를 포함하는 새로운 배열을 생성
+    console.log(ret5);
+
+//reduce 누적
+    let numbers5=[1,2,3,4];
+    let sum=numbers5.reduce((acc,num)=>acc+num,0);  //reduce:배열의 각 요소를 누적하여 단일 값을 생성, acc:이전 호출에서 반환된 누적값 저장, num:현재 배열요소
+    let avg=sum/numbers5.length;
+    console.log(sum);   //10
+    console.log(avg);
+
+//push
+    const str="apple,banana,cherry";
+    const fruits1=str.split(",");
+    console.log(fruits1);
+    fruits1.push("orange");
+    console.log(fruits1);
+
+//pop
+    const arr=[1,2,3];
+    const lastElement=arr.pop();
+    console.log(lastElement);   //3
+    console.log(arr);  //[1,2]
+    arr.pop();
+    console.log(arr);  //[1] 
+
+//sort 오름차순정렬
+//reverse
+    const ar=[3,1,4,2];
+    ar.sort();   
+    console.log(ar);  //[1,2,3,4]
+    ar.reverse();
+    console.log(ar);   //[4,3,2,1]
+
+    const strArr=["banana","apple","cherry"];
+    strArr.sort();
+    console.log(strArr);
+
+//forEach
+    const ARR=[1,2,3];
+    ARR.forEach((element) => {
+        console.log(element*2);
+    });
+
+    const strARR1=["a","b","c"];
+    strARR1.forEach((char)=>{
+        console.log(char.toUpperCase());
+    });
+
+    const numbers1=[1,2,3];
+    numbers1.forEach((num,index) =>{
+        console.log(`Index ${index}: ${num}`);
+    });
+
+//filter
+    const ARR2=[1,2,3,4,5];
+    const evenNumbers=ARR2.filter(num=>num%2===0);
+    console.log(evenNumbers);
+
+    const strArr2=["apple","banana","cherry"];
+    const filtered=strArr2.filter(fruits2=>fruits2.includes("a"));
+    console.log(filtered);
+
+//map
+    const Numbers=[1,2,3,4];
+    const squares=Numbers.map(num=> num*num);
+    console.log(squares);
+
+    const Fruits3=["apple","banana","cherry"];
+    const upperFruits=Fruits3.map(fruit=>fruit.toUpperCase());
+    console.log(upperFruits);
+
+    const users=[
+        {name:"Alice", age:25},
+        {name:"Bob", age:30},
+        {name:"Charlie", age:40}
+    ];
+    const names=users.map(user=>user.name);
+    console.log(names);    //['Alice', 'Bob', 'Charlie']
+    
+//find   조건에 맞는 값 중에 첫번째 값만 
+    const ARR3=[5,12,8,130,44];
+    const found=ARR3.find(num=>num>10);  
+    console.log(found);   //12
+
+    const Fruits4=["apple","banana","bcherry"];
+    const foundfruit=Fruits4.find(fruit=>fruit.startsWith("b"));   //조건 만족하는 첫번째 값만
+    console.log(foundfruit);   //banana
+
+    const ARR4=[5,12,8,130,44];
+    const index=ARR4.findIndex(num=>num>10);
+    console.log(index);   //1
+
+//includes
+    const ARR5=[1,2,3];
+    console.log(ARR5.includes(2));   //true
+    console.log(ARR5.includes(4));   //false
+
+//join
+    const ARR6=["Hello","World"];
+    const numberString=numbers.join("-");
+    console.log(numberString);   //1-2-3
+
+     
+
+</script>

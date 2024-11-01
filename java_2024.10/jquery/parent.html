@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            $("button").on("click",function(){
+               $("p").parent().css({"border":"2px solid red"});  //p의 부모만(li)
+                //$("p").parents()  모든 조상들
+                //$("p").children()
+                //$("p").parents("div")부모중 div만 선택
+                //$("p").parentsUntil("div") div빼고 그 전까지만 
+                //$("p").closest("div")  div랑 가장 가까운 조상 하나만
+            });
+        });
+    </script>
+    <style>
+        .container * {   /*   *:모든 요소들 선택 */
+            display: block;
+            padding:5px;
+            border:1px solid gray;
+            margin:15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>.parent()메소드</h1>
+    <div class="container">
+        <div>div요소</div>
+            <ul>
+                <li>li 요소</li>
+                <li>li 요소
+                    <p>p 요소 (기준)
+                        <span>span 요소</span>
+                    </p>
+                </li>
+                <li>li 요소</li>
+            </ul>
+    </div>
+    <button>p요소의 부모 요소</button>
+</body>
+</html>

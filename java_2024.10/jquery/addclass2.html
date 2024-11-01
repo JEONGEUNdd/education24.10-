@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+        .disabled-bg{background-color:red;}
+        .input[type="checkbox"]{
+            appearance:none;
+            width:20px;
+            height:20px;
+            border:2px solid blue;
+            cursor:pointer;
+        };
+    </style>
+</head>
+<body>
+    <input type="text" disabled><br>
+    <input type="text"><br>
+    <input type="checkbox" disabled>체크박스
+
+    <script>
+        $(function(){
+            $(':disabled').addClass('disabled-bg');
+        });   
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+ getElementsByTagName('input'):input 태그 이름을 가진 모든 요소를 가져옴 
+ addEventListener('click',function(){~   :한 요소에 여러 개의 click 핸들러를 추가 
+ 
+ querySelector('.classname'), querySelector("#idname")  getElementById랑 같은 기능인데 querySelector는 id나 class 다 불러오기 가능
+
+ $(function(){
+            $("p:eq(2)").on("click",function(){
+            $(".jq").css("backgroundcolor","lightgray");
+            });   
+        });
+eq(n):인덱스가 n인 요소 선택
+gt(n):인덱스가 n보다 큰 요소 모두 선택 <-> lt(n)
+first,last,odd,even,contains
+
+
+
+ $(function(){
+            $("button").on("click",function(){
+                $(":checked").next().text("체크되어 있는 요소는 이 요소입니다.");   
+                //next():<span> 요소를 선택(형제)
+                //prev():(이전거) <input>요소를 선택
+            });
+        });
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <script>
+       $(function(){
+           $("button").on("click", function(){
+               // img 태그에 있는 이미지를 변경
+               $("img").attr("src", "https://item.kakaocdn.net/do/579ba1722b47f8f99e52ab4461ae447b26397d82c8691bdabf557d1536959d9c");
+           });   //attr: HTML 요소의 속성(attribute)을 가져오거나 설정
+       });
+    </script>
+
+    <img src="https://mir-s3-cdn-cf.behance.net/projects/404/a225f9195138863.66084a03d817d.jpg" alt="animal"><br>
+
+    <button>속성 바꾸기</button>
+</body>
+</html> 

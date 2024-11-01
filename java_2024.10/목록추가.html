@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: flex; /* 위 정렬 */
+            height: 100vh; 
+            margin: 0;
+            padding-top: 20px; /* 상단 여백 */
+        }
+        .input-container {
+            display: flex; /* 한 줄로 배치 */
+            margin-bottom: 10px; /* 입력 필드와 버튼 간의 여백 */
+        }
+        input, button {
+            margin: 5px; 
+        }
+        
+    </style>
+    <script>
+        var todoList = [];
+        var todoDate = [];
+    
+        function index() {
+            var a = document.getElementById("index").value; 
+            var dateText = document.getElementById("dateInput").value;
+            todoList.push(a);
+            todoDate.push(dateText);
+            console.log(todoList,todoDate);
+            rendertodoList();
+        }
+
+        function indexlastdelete(){
+            todoList.pop();
+            todoDate.pop();
+            console.log(todoList,todoDate);
+            rendertodoList();
+        }
+
+        function indexdelete(index){
+            todoList.splice(index,1);
+            todoDate.slice(index, 1);
+            console.log(todoList,todoDate);
+            rendertodoList();
+        }
+
+        function rendertodoList(){
+            let todoitem='';
+
+            for (let num in todoList){
+                todoitem+= '<li>' +todoList[num]+ ' (날짜: ' +todoDate[num]+')<button class="index" onclick="indexdelete('+num+')">삭제</button></li>';
+                    console.log(todoList,todoDate);
+            }
+
+            document.getElementById('todo').innerHTML=todoitem;
+            console.log("현재 배열: ", todoList);
+        }
+
+    </script> 
+</head>
+
+<body>
+    <h3>할일 목록</h3>
+    <div class="input-container">
+        <input type="text" id="index" value="" placeholder="항목을 입력하세요">
+        <input type="date" id="dateInput" name="sdate"><br>
+    </div>
+    <div>
+    <button class="index" onclick="index()">항목 추가</button>    <!-- onclick을 index로 지정해서 위에 function을 index로 지정  document~안씀 -->
+    <button class="index" onclick="indexlastdelete()">마지막 항목 삭제</button>  
+    </div>
+    
+    <ul id="todo"></ul>
+</body>
+</html> 

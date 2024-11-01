@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 500px;
+            height: 700px;
+        }
+        table th{
+            background-color: rgb(189, 188, 188);
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+    <h2>12 X 10 표</h2>
+    <table border="1">
+        <thead>
+            <tr id = "th">
+                <th style="width: 60px;">행/열</th>
+            </tr>
+        </thead>
+        <tbody id = "tb">
+
+        </tbody>
+    </table>
+    </div>
+
+    <script>
+
+        // 1-10까지의 th만들기
+        const thead = document.getElementById('th');
+        for(h=1; h<=10; h++){
+            thead.innerHTML += `<th>${h}</th>`;
+        }
+
+        //1-12까지의 th만들기
+        const tbody = document.getElementById('tb');
+        for (i=1; i <= 12; i++){
+            let row = `<tr><th>${i}</th>`; //행 번호 추가
+
+            //각 열에 빈 셀 추가
+            for(let j = 1; j <= 10; j++){
+                row += `<td>${i*j}</td>`;
+            }
+            row  += '</tr>'
+            tbody.innerHTML += row;
+        }
+
+    </script>
+</body>
+</html>

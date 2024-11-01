@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시계</title>
+
+    <style>
+        #clock{
+            display:flex;
+            background-color:lightcyan;
+            width:500px;
+            height:100px;
+            font-size:50px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="clock"></div>
+    <script>
+        function formatNumber(num){
+            return (num<10? '0' : '')+num
+        }
+
+            function updateClock(){
+            const date1=new Date();
+
+            const year=date1.getFullYear();
+            const month=formatNumber(date1.getMonth()+1);
+            const date=formatNumber(date1.getDate());
+            const hour=formatNumber(date1.getHours());
+            const minutes=formatNumber(date1.getMinutes());
+            const seconds=formatNumber(date1.getSeconds());
+
+            const formattedTime = `${year}-${month}-${date} ${hour}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = formattedTime;
+
+        }
+        
+        setInterval(updateClock,1000);  //1초마다
+        updateClock();
+</script>
+</body>
+</html>
+

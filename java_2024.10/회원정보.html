@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea id="dataInput" placeholder="여기에 문자열을 입력하세요"></textarea>
+    <button onclick="index()">처리하기</button>
+    <pre id="result"></pre>
+    <script>
+        function index(){
+            const dataInput=document.getElementById('dataInput').value;
+            const rows=dataInput.split('\n');
+
+            const keys=rows[0].split('\t');
+            const resultArray=[];
+
+            for(let i=0; i<rows.length; i++){
+                const values=rows[i].split('\t');
+                const obj={};
+                
+                for (let j=0; j<keys.length; j++){
+                    obj[keys[j]]=values[j];
+                }
+                resultArray.push(obj);
+            }
+
+            document.getElementById('result').textContent=JSON.stringify(resultArray);
+        };
+    </script>
+</body>
+</html>
+

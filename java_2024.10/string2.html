@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const array2D=[
+        ['이름','나이','도시'],
+        ['홍길동',25,'서울'],
+        ['김영희',30,'부산'],
+        ['이철수',28,'대구']
+        ];
+    
+    console.log(array2D);
+    const jsonString=JSON.stringify(array2D);  // JSON.stringfy: JavaScript의 객체나 배열을 JSON 문자열로 변환
+    console.log(jsonString);
+
+    const jsonString2=`[
+        {"이름": "홍길동", "나이":25, "도시": "서울"},
+        {"이름": "김영희", "나이":30, "도시": "부산"},
+        {"이름": "이철수", "나이":28, "도시": "대구"}
+    ]`;   //문자열
+
+    console.log(jsonString2);
+    const jsonObject=JSON.parse(jsonString2);
+    console.log(jsonObject);
+
+    const firstPerson=jsonObject[0];
+    const name=firstPerson.이름;
+    const age=firstPerson.나이;
+    const city=firstPerson.도시;
+    const result=`첫 번째 사람의 정보:\n이름: ${name}\n나이: ${age} \n도시:${city}`;
+    console.log(result);  //객체 형식으로
+///////////////////////////////////////////////
+    const a=[
+        ['이름','학년','전공'],  
+        ['이수빈',3,'컴퓨터공학'],
+        ['박지민',2,'기계공학'],
+        ['최영수',4,'전자공학']
+    ];
+    console.log(a);
+    const aa=JSON.stringify(a); //JSON문자열
+    console.log(aa);
+
+    const aa1=`[
+        {"이름": "이수빈", "학년":3, "전공": "컴퓨터공학"},
+        {"이름": "박지민", "학년":2, "전공": "기계공학"},
+        {"이름": "최영수", "학년":4, "전공": "전자공학"}
+    ]`;
+
+    const jsonObject2=JSON.parse(aa1);
+
+    for(i=0;i<jsonObject2.length;i++){
+        const person=jsonObject2[i];
+        const name1=person.이름;
+        const grade=person.학년;
+        const major=person.전공;
+        const result1=`<br>${name1},${grade}, ${major}`;
+        // \n : result + '\n' +
+        // `<br>` 
+        document.write(result1);
+    }
+    
+
+
+
+   
+
+
+    </script>
+</body>
+</html>

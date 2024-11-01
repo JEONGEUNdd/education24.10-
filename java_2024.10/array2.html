@@ -1,0 +1,65 @@
+<script>
+    var arr=[1,2,3,4,5,6,7];
+    var result="<table border='1'><tr>";
+
+    for (var idx in arr){
+        result+= "<td>arr[" +idx+ ']=' +arr[idx]+ "</td>";
+    }
+    result+="</tr></table>";
+    document.write(result);
+
+
+    ////////////////////
+    var arr=new Array(10,"문자열",false);
+
+    document.write((typeof arr) + "<br>");
+    document.write((typeof arr[0]) + "<br>");
+    document.write((typeof arr[1]) + "<br>");
+    document.write((typeof arr[2]) + "<br>");
+
+
+    //다차원배열
+    var arr=new Array(3);  //3개의 행 갖는 배열 생성
+    for (var row=0; row<3; row++){
+        arr[row]=new Array(4); // 4개의 열을 갖는 배열
+        for (var column=0; column<4; column++){
+            arr[row][column]="[" +row+ "," +column+ "]";
+            document.write(arr[row][column]+ " ");
+        }
+        document.write("<br>");
+    }
+
+
+    ///연관배열{키:값}
+    const array=[1,2,3];
+    console.log(array[0]);
+
+    const obj={
+        name:'Alice',
+        age:25
+    };
+    console.log(obj['name']);  //'Alice'
+    console.log(obj['name']);  //'Alice'
+
+    obj.height=180;   //값 추가
+    console.log(obj);
+
+    //////
+    const arrayWithObjects=[
+        {key1:'value1'},
+        {key2:'value2'}
+    ];
+
+    console.log(arrayWithObjects[0].key1);  //.통해 값 가져옴
+
+    const arr1=[1,2,3];
+    console.log(arr1.length);
+
+    const arr2=["apple","banana","cherry","date"];
+    console.log(arr2.length);
+
+    const arr3=[];
+    console.log(arr3.length);
+    console.log(typeof arr3[0]);  //undefined
+
+</script>

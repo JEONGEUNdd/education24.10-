@@ -1,0 +1,55 @@
+<script>
+    //floor:주어진 숫자보다 작거나 같은 가장 큰 정수
+    let num1=5.9;
+    console.log(Math.floor(num1));   //5
+
+    let num2=-2.3;
+    console.log(Math.floor(num2));   //-3
+
+    let num3=0.999;
+    console.log(Math.floor(num3));   //0
+
+    //round
+    let Num11=3.3;
+    console.log(Math.round(Num11)); //3
+
+    let Num1=5.5;
+    console.log(Math.round(Num1));   //6
+
+    // ceil: 주어진 숫자보다 크거나 같은 가장 작은 정수
+    let num11=5.1;
+    console.log(Math.ceil(num11));     //6
+
+    let num22=-2.9;
+    console.log(Math.ceil(num22));  //-2
+
+    let num33=0.01;
+    console.log(Math.ceil(num33));  //1
+
+    
+    //random:0~1미만의 난수
+    let randomNum1=Math.random();
+    console.log(randomNum1);
+
+    let randomNum2=Math.random()*10;  //0이상 10미만
+    console.log(randomNum2);
+
+    let randomNum3=Math.floor(Math.random()*100);
+    console.log(randomNum3);
+
+
+    //5~7사이의 랜덤 정수
+    let randomNum4=Math.floor(Math.random()*(12-5+1))+5;
+    console.log(randomNum4);
+
+    function getRandomInt(min,max){
+        return Math.floor(Math.random()*(max-min+1))+min;
+    }
+
+    let randomNum=getRandomInt(5,12);
+    console.log(randomNum);
+
+
+
+
+</script>

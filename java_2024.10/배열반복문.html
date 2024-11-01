@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    //과목별 총점과 평균
+    //학생별 성적 총점과 평균
+    let scores=[[85,90,83,94,86],  //국어
+    [97,72,92,89,80],   //영어
+    [87,83,98,84,96]];  //수학
+
+    const kor=[85,90,83,94,86];
+    const eng=[97,72,92,89,80];
+    const math=[87,83,98,84,96];
+  
+    sum1=0;
+    sum2=0;
+    sum3=0;
+    
+    //국어총점
+    for (i=0; i<kor.length; i++){
+        sum1=sum1+kor[i]
+    }
+    document.write("국어 총점: " +sum1+"<br>");
+   
+    //영어총점
+    for (i=0; i<eng.length; i++){
+        sum2=sum2+eng[i]
+    }
+    document.write("영어 총점: " +sum2+"<br>");
+
+    //수학총점
+    for (i=0; i<math.length; i++){
+        sum3=sum3+math[i]
+    }
+    document.write("수학 총점: " +sum3+"<br>");
+
+    //////과목별 평균
+    var koraverage=sum1/kor.length; 
+    document.write("국어 평균: " + koraverage +"<br>");
+
+    var engaverage=sum2/eng.length; 
+    document.write("영어 평균: " + engaverage +"<br>");
+
+    var mathaverage=sum3/math.length; 
+    document.write("수학 평균: " + mathaverage +"<br>");
+
+
+    ////////////////////////////////////////////////////
+    numStudents=scores[0].length
+    numSubjects=scores.length
+    //scores[과목][학생]   이건 안변함.  i=과목, j=학생수
+
+ 
+    // 학생별 총점, 평균
+    document.write("<br>학생별 총점, 평균<br>");
+    for (let j = 0; j < numStudents; j++) { 
+    let total = 0; 
+
+        for (let i = 0; i < numSubjects; i++) { 
+            total += scores[i][j]; 
+        }
+    document.write("학생 " + (j + 1) + " 총점: " + total + "<br>");
+    
+    let average = total / numSubjects; 
+    document.write("학생 " + (j + 1) + " 평균: " + average + "<br>");
+    }   
+
+    // 과목별 총점, 평균
+    document.write("<br>과목별 총점, 평균<br>");
+    for (let i = 0; i < numSubjects; i++) {
+        let sum = 0;
+
+        for (let j = 0; j < numStudents; j++) {
+            sum += scores[i][j];
+        }
+    document.write("과목 " + (i + 1) + " 총점: " + sum + "<br>");
+
+        let subaverage = sum / numStudents;
+        document.write("과목 " + (i + 1) + " 평균: " + subaverage + "<br>");
+    }
+
+
+
+    </script>
+</body>
+</html>

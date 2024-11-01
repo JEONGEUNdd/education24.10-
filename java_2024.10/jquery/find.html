@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            $("button").on("click",function(){
+                $("#list").find("li").eq(0).html("아이템이 바뀌었습니다.")
+            });
+        });
+
+        // $(function(){
+        //     $("button").on("click",function(){
+        //         $("#list")
+        //         .find("li")
+        //         .eq(1).html("두 번째 아이템을 선택했어요.")
+        //         .end()
+        //         .eq(2).html("세 번째 아이템도 선택했어요.");
+        //     });
+        // });
+
+    </script>
+</head>
+
+<body>
+    <h1>메서드 체이닝</h1>
+    <ul id="list">
+        <li>첫 번째 아이템이에요</li>
+        <li>두 번째 아이템이에요</li>
+        <li>세 번째 아이템이에요</li>
+    </ul>
+    <button>텍스트 변경</button>
+</body>
+</html>

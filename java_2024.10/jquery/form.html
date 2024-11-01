@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            $("form").on("submit",function(){
+                event.preventDefault();
+                console.log($(this).serialize());
+
+                $.ajax({
+                    url:"https://post.pul.kr",
+                    type:"POST",
+                    data:$(this).serialize(),
+                    success:function(response){
+                        $("#result").html("<p>성공: " +response+"</p>");
+                    },
+                    error:function(xhr,status,error){
+                        $("#result").html("<p>오류: "+error+"</p>");
+                        console.error("AJAX 요청 실패", status,error);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+   
+    <h1>직렬화</h1>
+    <form action="https://post.pul.kr">자신의 별명을 적어주세요:<br>
+    <input type="text" name="nickname" value="홍길동"><br><br>
+    현재 살고 있는 지역을 선택해주세요: <br>
+    <input type="radio" name="region" value="서울">서울<br>
+    <input type="radio" name="region" value="경기">경기<br>
+    <input type="radio" name="region" value="대전">대전<br>
+    <input type="radio" name="region" value="부산">부산<br>
+    <input type="radio" name="region" value="광주">광주<br>
+    
+    좋아하는 음악장르를 선택해주세요: <br>
+    <input type="checkbox" name="music[]" value="팝">팝<br>
+    <input type="checkbox" name="music[]" value="재즈">재즈<br>
+    <input type="checkbox" name="music[]" value="댄스">댄스<br>
+    <input type="checkbox" name="music[]" value="발라드">발라드<br>
+    <input type="hidden" name="favorite" value="퇴근">
+    <input type="submit" value="전송">
+    
+    </form>
+    <p id="result"></p>
+</body>
+</html>

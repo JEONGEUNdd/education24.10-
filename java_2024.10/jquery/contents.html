@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            $("button").on("click",function(){
+                $("iframe")
+                    .contents()
+                    .find("a")
+                    .css("backgroundColor","yellow");
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>.Contents()메소드</h1>
+    <button>a 요소의 배경색 변경</button><br><br>
+    <iframe src="/jquery/cont.html" style="width:95%; height:400px;"></iframe>
+</body>
+</html>

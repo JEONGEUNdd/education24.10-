@@ -1,0 +1,113 @@
+<script>
+    //년
+        const date1=new Date();
+        console.log(date1);
+        console.log(date1.getFullYear());    //2024
+        date1.setFullYear(2025);   
+        console.log(date1.getFullYear());   //2025
+    //월
+        const date2=new Date();
+        console.log(date2.getMonth());  //-1된 값으로 나와서 10월이면 결과값 9로 나옴
+        console.log(date2.getMonth()+1);  //현재 월
+        date2.setMonth(4);   //5월 세팅
+
+    //일 getDate()
+        const date3=new Date();  
+        console.log(date3.getDate());
+        
+    //요일   (0:일, 1:월....6:토)
+        const date4=new Date();
+        console.log(date4.getDay());
+
+    //초단위   기준 1970년 1월 1일 12:00이후의 시간을 초로 표현
+        const date5=new Date();
+        console.log(date5.getTime());
+    
+    //시 getHours()   
+        const date6=new Date();
+        console.log(date6.getHours());
+
+    //분 getMinutes()
+    //초 getSeconds() 
+
+
+        var aaa=[1,2,3,4,5,6,7,8,9,10];
+        aaa.reverse();
+        var idx=0;
+
+        const intervalId=setInterval(function(){
+            document.getElementById("in").innerHTML=aaa[idx];
+            idx++;
+            idx=(idx>=aaa.length)?0:idx;
+        },1000);
+
+        /*if (count>=5){
+            clearInterval(intervalId);
+        }
+
+        setTimeout(() =>{
+            console.log("2초 후 실행");
+        },2000);
+*/
+
+        //올해 크리스마스가 무슨 요일인지 알아내기
+        var wn=["일","월","화","수","목","금","토"];
+        const specificDate=new Date('2024-12-25');
+        const weekName=specificDate.getDay();
+
+        console.log(wn[weekName]+"요일");
+
+
+        ////////////////////
+        const a1=new Date();
+        const a2=new Date('2024-12-25');
+
+        const a3=a2-a1;
+        console.log(Math.ceil(a3/(1000*60*60*24)));  //남은 날짜
+        //(1000 * 60 * 60 * 24)는 하루를 밀리초로 표현
+        //Math.ceil: 소수점을 올림 처리하여 숫자를 가장 가까운 정수로 올림
+
+        //내년 내 생일이 며칠 남았는지
+        const a11=new Date();
+        const a22=new Date('2025-08-03');
+        const a33=a22-a11;
+        a44=Math.ceil(a33/(1000*60*60*24));   
+        document.write("다음 생일까지 "+a44+"일 남았습니다.");  
+
+        //특정날짜
+        const birthday=new date(2025,7,3,0,0);  //8월 3일
+        
+        let date=new Date('2023-10-27');
+        let date=new Date('2023-10-27T12:00:00');  //T:시간정보
+
+        let originalDate=new Date('2023-10-27T12:00:00');
+        let timestamp=originalDate.getTime(); //1970년 1월 1일 00:00:00 UTC부터 originalDate까지의 경과 시간을 밀리초로
+        let newDate=new Date(timestamp);//newDate는 originalDate와 동일한 시간(2023-10-27T12:00:00)
+
+        function formatDate(date){
+            const year = date.getFullYear();
+            const month=String(date.getMonth()+1).padStart(2,'0');
+            const day=String(date.getDate()+1).padStart(2,'0');
+            const hours=String(date.getHours()+1).padStart(2,'0');
+            const minutes=String(date.getMinutes()+1).padStart(2,'0');
+            const seconds=String(date.getSeconds()+1).padStart(2,'0');
+            return `${year}-${month}-${date} ${hour}:${minutes}:${seconds}`;
+        }
+        document.write(formatDate(newDate));
+        
+        //각 월의 마지막 일 수 확인법
+        const now=new Date();
+        const year1=now.getFullYear();
+        const month1=now.getMonth();
+        const mothDays=[31,28,31,30,31,30,31,31,30,31,30,31];
+        if (month===1 && ((year%4===0 && year%100!=0)||(year %400===0))){monthDays[month]=29;  //2월이 윤년인지 체크
+        }
+
+        //
+
+
+
+
+
+
+</script>

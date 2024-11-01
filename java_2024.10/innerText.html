@@ -1,0 +1,19 @@
+<style>strong {display:none;}</style>  
+
+<!-- Hello !만 나옴 텍스트만 나옴  -->
+<div id="example2">Hello <strong>World</strong>!</div>
+<script>
+    const elem=document.getElementById('example2');
+    console.log(elem.textContent);
+   //elem.textContent="Updated Text";
+</script>
+
+
+<!-- Hello World!나옴 
+ innerText는 스타일에서 숨겨진것도 가져옴 스타일에 영향 받지 않음-->
+<!-- <div id="example1">Hello <strong>World</strong>!</div>
+<script>
+    const elem=document.getElementById('exmaple1');
+    console.log(elem.innerText);
+    elem.innerText="New Text";
+</script> -->

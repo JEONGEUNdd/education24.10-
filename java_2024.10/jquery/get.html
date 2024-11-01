@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Ajax HTTP Request</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function() {
+            $("#requestBtn").on("click", function() {
+                // $.get(URL주소,데이터,콜백함수);
+                // GET 방식으로 서버에 HTTP Request를 보냄.
+                //let vl = { species: "고양이", name: "나비", age: 3, }
+
+                let vl = [{ species: "고양이", name: "나비", age: 3}, 
+                { species: "강아지", name: "포비", age: 5}
+                ]
+
+                $.get("https://post.pul.kr/",
+                    //{ species: "고양이", name: "나비", age: 3,  },
+                    {animal:vl},
+                    //vl,
+                    //"species=고양이&name=나비&age=3",
+                    function(data) {
+                        $("#text").html(data);
+                    }
+                );
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>$.get() 메소드</h1>
+    <button id="requestBtn">GET 방식으로 데이터 불러오기!</button>
+    <p id="text"></p>
+</body>
+</html>

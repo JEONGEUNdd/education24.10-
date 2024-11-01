@@ -1,0 +1,53 @@
+<!-- add(className):highlight 클래스를 myDiv에 추가
+remove(className)
+toggle(className)
+contains(className) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .highlight {
+            background-color: rgb(218, 150, 203);
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv" class="abc">이것은 예제 요소입니다.</div>
+    <button id="addButton">클래스 추가</button>
+    <button id="removeButton">클래스 제거</button>
+    <button id="toggleButton">클래스 토글</button>
+    <button id="checkButton">클래스 확인</button>
+
+    <script>
+        var myDiv=document.getElementById('myDiv');
+
+        //add(className)
+        document.getElementById('addButton').onclick=function(){
+            myDiv.classList.add('highlight');
+        };
+        // remove(className)
+        document.getElementById('removeButton').onclick = function() {
+            myDiv.classList.remove('highlight');
+        };
+
+        // toggle(className)  하이라이트 넣었다뺐다하기
+        document.getElementById('toggleButton').onclick = function() {
+            myDiv.classList.toggle('highlight');
+        };
+
+        // contains(className)
+        document.getElementById('checkButton').onclick = function() {
+            if (myDiv.classList.contains('highlight')) {
+                alert("highlight 클래스가 있습니다.");
+            } else {
+                alert("highlight 클래스가 없습니다.");
+            }
+        };
+    </script>
+</body>
+</html> 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        $("#toggleButton").click(function(){
+            $("p").toggle();
+        });
+
+        $("#showButton").click(function(){
+            $("p").show();
+        });
+
+        $("#hideButton").click(function(){
+            $("p").hide();
+        });
+    </script>
+</head>
+<body>
+    <button id="toggleButton">Toggle</button>
+    <button id="showButton">Show</button>
+    <button id="hideButton">Hide</button>
+    <p>This paragraph will be toggled.</p>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr id="th">
+               <th>행/열</th>
+            </tr>
+        </thead>
+        <tbody id="tb"></tbody>
+        
+    </table>
+    <script>
+        //12 X 10 표 만들기 스크립트
+        const thead=document.getElementById('th');
+         for (let h=1;h<=10; h++){
+            thead.innerHTML +=`<th>${h}</th>`;
+         }
+
+        const tbody=document.getElementById('tb');
+    
+        for  (let i=1; i<=12; i++){
+            let row=`<tr><th>${i}</th>`;
+    
+            for (let j=1; j<=10; j++){
+                row+=`<td></td>`;
+    
+            }
+            row+='</tr>';
+            tbody.innerHTML+=row;
+        } 
+
+    </script>
+</body>
+</html>

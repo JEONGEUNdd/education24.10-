@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            var items = $("li");
+            $("button#count").on("click", function(){
+                $("#len").text("요소의 총 개수는 " + items.length + "개 입니다");
+            });
+
+            $("button#filter").on("click", function(){
+                $("li:has(span)").text("<span>요소를 가지고 있는 아이템이에요");  //has: 특정 요소가 자식 요소를 포함하고 있는지를 검사
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>li 요소의 저장</h1>
+    <ul>
+        <li>첫 번째 아이템</li>
+        <li><span>두 번째</span> 아이템</li>
+        <li>세 번째 아이템</li>
+    </ul>
+    
+    <button id="count">요소의 길이는?</button>
+    <button id="filter">필터링</button>
+    <p id="len"></p>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- clarInterval과 setInterval세트임 바꾸는거X -->
+    <h1>날짜 카운트 다운</h1>
+    <p>날짜를 입력하세요</p>
+    <input type="date" id="dateInput" name="sdate">
+    <button class="index" onclick="index()">확인</button>
+    <h2 id="countdown"></h2>
+    <script>
+        let interval;
+        let future;
+        let countdownelement;
+
+        function countdown() {
+            const today = new Date(); 
+            const diff=future-today;
+            const days=Math.floor(diff/(1000*60*60*24));
+            const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+            const minutes=Math.floor((diff%(1000*60*60))/(1000*60));
+            const seconds=Math.floor((diff%(1000*60))/(1000));
+            countdownelement.innerHTML=`남은시간: ${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
+            }
+
+            if (diff<=0){
+                countdownelement.innerHTML='지난 날짜입니다.';
+                clearInterval(interval);  //claerInterval로 반복 멈춤 
+            }
+
+        function index() {
+            if (interval) clearInterval(interval); //interval에 값이 있다면, clearInterval(interval);을 사용해 이전에 설정된 타이머를 멈춤
+            future=new Date(document.getElementById('dateInput').value);
+            countdownelement=document.getElementById('countdown');
+            countdown();//이 부분이 없으면 1초 후에 결과가 나타나기 때문에, 즉시 출력을 위해 한 번 실행
+            interval=setInterval(countdown,1000);  //1초마다 남은시간 업데이트
+        };
+
+    </script>
+</body>
+</html>

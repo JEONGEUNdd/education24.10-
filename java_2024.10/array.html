@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var arr=["JavaScript"];
+        var element=arr[0];
+        
+        arr[1]=10;
+        arr[2]=element;
+
+        document.write("배열 arr의 요소에는 [" +arr+ "]가 있습니다.<br>");
+        document.write("배열 arr의 길이는 [" +arr.length+ "]입니다.<br>");
+
+        delete arr[2];//값만 삭제 공간 그대로
+        document.write("배열 arr의 요소에는 [" +arr+ "]가 있습니다.<br>");
+        document.write("배열 arr의 길이는 [" +arr.length+ "]입니다.<br>");
+        document.write(typeof arr[2]);
+
+
+        let arr2=[1,2,3,4,5];
+        document.write(arr2+"<br>");
+        arr2.splice(2,1); //인덱스 2에서 1개의 요소 삭제해서 1,2,4,5남음
+        arr2.splice(2,1,7); //잘라낸 자리에 7값 추가
+        document.write(arr2+"<br>");  //1,2,7,5
+        document.write(arr2.length);
+        
+
+        var kor=[90,89,65,99,85];
+        var total=0;
+
+        //총점
+        for ( var i=0; i<kor.length; i++){
+            total=total+kor[i]; 
+        }
+
+        //평균
+        var average=total/kor.length; 
+
+        document.write("총점:" + total);
+        document.write("평균: " + average);
+            
+        var grp=[18,45,10,9,22,35]; //18세이상 몇명인지
+        var sum=0;
+        for (var i=0; i<grp.length; i++){
+            if (grp[i]>=18){
+                sum=sum+1;
+            }
+        }
+        document.write("18세 이상인 사람의 수: "+sum);
+
+
+
+
+
+
+        
+
+
+        
+    </script>
+    
+
+</body>
+</html>

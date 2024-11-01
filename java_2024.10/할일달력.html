@@ -1,0 +1,135 @@
+<!DOCTYPE html>  <!-- localstorage에서 key값 받아서 하라고 물어보기 -->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할일 달력</title>
+    <!-- FullCalendar CSS 추가 -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: flex-start;
+            height: 100vh; 
+            margin: 0;
+            padding-top: 20px;
+        }
+        .input-container {
+            display: flex; 
+            margin-bottom: 10px;
+        }
+        input, button {
+            margin: 5px;
+        }
+        #calendar {
+            width: 1000px;
+            height: 1000px;
+            margin: 40px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>할일 목록</h3>
+    <div class="input-container">
+        <input type="text" id="index" value="" placeholder="할 일을 입력하세요">
+        <input type="date" id="dateInput" name="sdate">
+    </div>
+    <div>
+        <button class="index" onclick="addTodo()">항목 추가</button>
+        <button class="index" onclick="deleteLastTodo()">마지막 항목 삭제</button>
+    </div>
+    
+    <ul id="todo"></ul>
+    
+    <!-- FullCalendar 추가 -->
+    <div id="calendar"></div>
+
+    <!-- FullCalendar 자바스크립트 및 플러그인 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script>
+        var todoList = JSON.parse(localStorage.getItem("todoList")) || [];
+        var todoDate = JSON.parse(localStorage.getItem("todoDate")) || [];
+        var calendar;
+
+        // 할 일 추가
+        function addTodo() {
+            var task = document.getElementById("index").value; 
+            var dateText = document.getElementById("dateInput").value;
+            
+            if (task && dateText) {
+                todoList.push(task);
+                todoDate.push(dateText);
+                saveToLocalStorage();
+                renderTodoList();
+                addEventToCalendar(task, dateText);
+            }
+        }
+
+        // 마지막 할 일 삭제
+        function deleteLastTodo() {
+            todoList.pop();
+            todoDate.pop();
+            saveToLocalStorage();
+            renderTodoList();
+            reloadCalendarEvents();
+        }
+
+        // 특정 항목 삭제
+        function deleteTodoAtIndex(index) {
+            todoList.splice(index, 1);
+            todoDate.splice(index, 1);
+            saveToLocalStorage();
+            renderTodoList();
+            reloadCalendarEvents();
+        }
+
+        // 할 일 목록 로컬 스토리지에 저장
+        function saveToLocalStorage() {
+            localStorage.setItem("todoList", JSON.stringify(todoList));
+            localStorage.setItem("todoDate", JSON.stringify(todoDate));
+        }
+
+        // 할 일 목록 렌더링
+        function renderTodoList() {
+            let todoItems = '';
+            for (let num in todoList) {
+                todoItems += '<li>' + todoList[num] + ' (날짜: ' + todoDate[num] + ')<button class="index" onclick="deleteTodoAtIndex(' + num + ')">삭제</button></li>';
+            }
+            document.getElementById('todo').innerHTML = todoItems;
+        }
+
+        // 캘린더에 이벤트 추가
+        function addEventToCalendar(task, date) {
+            calendar.addEvent({
+                title: task,
+                start: date
+            });
+        }
+
+        // 캘린더에 기존 이벤트 다시 로드
+        function reloadCalendarEvents() {
+            calendar.getEvents().forEach(event => event.remove()); // 모든 기존 이벤트 제거
+            for (let i = 0; i < todoList.length; i++) {
+                addEventToCalendar(todoList[i], todoDate[i]);
+            }
+        }
+
+        // 페이지 로드 시 캘린더 및 할 일 목록 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'ko'
+            });
+
+            calendar.render();
+            renderTodoList();
+            reloadCalendarEvents(); // 캘린더에 저장된 할 일 목록 로드
+        });
+    </script>
+</body>
+</html>

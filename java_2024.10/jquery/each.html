@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+
+    <input type="checkbox" value="1">체크박스1<br>
+    <input type="checkbox" value="2">체크박스2<br>
+    <input type="checkbox" value="3">체크박스3<br>
+    <button id="showChecked">체크된 체크박스 값 보기</button>
+
+    <script>  //each는 :checked 선택자로 선택된 모든 체크된 요소들에 대해 하나씩 순서대로 함수 내 코드를 실행
+        $(function(){
+            $('#showChecked').click(function(){
+                var checkedValues=[];
+                $(':checked').each(function(){
+                    checkedValues.push(this.value);
+                });
+                alert('체크된 체크박스 값: '+checkedValues.join(','));
+            });
+        });
+    </script>
+</body>
+</html>

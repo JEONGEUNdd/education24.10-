@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표만들기</title>
+</head>
+<body>
+    <input type="text" name="rows" id="rows" placeholder="행 수">
+    <input type="text" name="columns" id="columns" placeholder="열 수">
+    <button id="table" onclick="drawtable()">표 만들기</button>
+    
+    <table border="1" style="border-collapse: collapse;">
+        <thead id="head">
+            
+        </thead>
+
+        <tbody id="tb">
+
+        </tbody>
+    </table>
+
+    <script>
+        function drawtable() {  
+            const rows = parseInt(document.getElementById('rows').value);
+            const columns = parseInt(document.getElementById('columns').value);
+            const thead = document.getElementById('head');
+            const tbody = document.getElementById('tb');
+            thead.innerHTML = '';
+            tbody.innerHTML = '';
+
+
+            //헤더생성
+            let hd = '<tr><th>행/열</th>';
+            for (let j = 1; j <= columns; j++) {  //열제목
+                hd += `<th>${j}</th>`;
+            }
+            hd += '</tr>';
+            thead.innerHTML += hd;
+
+            //바디생성
+            for (let i = 1; i <= rows; i++) {  //행제목
+                let row = `<tr><th>${i}</th>`;
+                for (let j = 1; j <= columns; j++) {
+                    row += `<td>${i * j}</td>`; 
+                }
+                row += '</tr>';
+                tbody.innerHTML += row;
+            }
+        }
+
+    </script>
+</body>
+</html>

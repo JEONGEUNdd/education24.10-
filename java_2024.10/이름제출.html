@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <form id="myform" onsubmit="return handleSubmit(event)">  <!--onsubmit없으면 "제출" 버튼을 클릭하면 페이지가 새로 고쳐지거나 다른 페이지로 이동 --> 
+        <h2>이름 입력</h2>
+        <input type="text" id="name" placeholder="이름을 입력하세요" required>
+        <input type="submit" value="제출">
+    </form>
+
+    <script>
+        function handleSubmit(event){
+            event.preventDefault();  //기본폼 제출 방지(주소 안바뀜), 다른 항목값들 더 입력할 때 이름만 입력하고 페이지 넘어감을 방지. 사용자메시지 표시후 페이지 넘어감
+
+            const name=document.getElementById('name').value;
+            alert(`안녕하세요, ${name}님!`);     //alert: 팝업 창을 통해 사용자가 입력한 이름과 함께 인사 메시지를 보여줌
+            myform.submit();
+        }
+    </script>
+</body>
+</html>

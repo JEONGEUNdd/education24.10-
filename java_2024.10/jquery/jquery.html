@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        //제이쿼리코드 $(function(){  으로 시작
+        $(function(){
+            $("p").on("click",function(){
+                //$("#jq").css("border","2px solid orange");  속성 하나만 적용
+                $("#jq").css({"border":"2px solid orange", "background-color":"skyblue"});
+                $("span").css("fontSize","28px");
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>HTML 태그 선택자</h1>
+    <p id="jq">이제부터 <span>제이쿼리</span>를 다 같이 공부합시다!</p><br>
+    마우스로 글씨를 클릭해보세요</p>
+</body>
+</html>
+
+
+
+<!-- window.onload=function(){
+
+};
+
+$(document).ready(function(){
+//제이쿼리코드  
+});
+
+$(function(){
+//제이쿼리코드
+}); -->

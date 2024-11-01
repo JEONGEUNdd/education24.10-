@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업창 만들기</title>
+</head>
+<body>
+    <button onclick="popup()">팝업</button>
+    <script>
+        function popup(){
+            window.open('시계.html','팝업1','left=0,top=0,width=500,height=300');
+            window.open('popup1.html','팝업2','width=500, height=300');
+        }
+    </script>
+    <!-- 
+     <script>location.href='구구단.html'</script>   구구단.html로 이동 
+     location.replace():뒤로가기 못하게 -->
+</body>
+</html>

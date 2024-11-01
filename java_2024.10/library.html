@@ -1,0 +1,45 @@
+//날짜버튼
+<input type="date" id="dateInput" name="sdate">
+
+
+<script>
+
+    let newDate=New Date(timestamp);
+    function formatDate(date){
+        const year = date.getFullYear();
+        const month=String(date.getMonth()+1).padStart(2,'0');
+        const day=String(date.getDate()+1).padStart(2,'0');
+        const hours=String(date.getHours()+1).padStart(2,'0');
+        const minutes=String(date.getMinutes()+1).padStart(2,'0');
+        const seconds=String(date.getSeconds()+1).padStart(2,'0');
+        return `${year}-${month}-${date} ${hour}:${minutes}:${seconds}`;
+    }
+    document.write(formatDate(newDate));
+
+
+    function cal(){
+    const now=new Date();
+        const year=now.getFullYear();
+        const month=now.getMonth();
+        const date=now.getDate();
+        const firstDay=new Date(year,month,1);
+        const firstDayofWeek=firstDay.getDay();
+        const lastDay=new Date(year,month+1,0);
+        const daysInMonth=lastDay.getDate();
+    }
+
+    
+    //랜덤 정수 뽑기
+    function getRandomInt(min,max){
+        return Math.floor(Math.random()*(max-min+1))+min;
+    }
+    let randomNum=getRandomInt(5,12);  //5~12사이의 랜덤 정수
+    console.log(randomNum);
+
+//jquery
+    $(function(){
+            $("p:eq(2)").on("click",function(){
+            $(".jq").css("backgroundcolor","lightgray");
+            });   //eq(n):인덱스가 n인 요소 선택
+        });
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+
+    $(function(){
+        $("button").on("click", function(){
+            $("li:first").text("첫 번째 항목");  
+            $("li:eq(2)").css("backgroundColor","red");
+            //$("li:nth-child(3)").css("backgroundColor","red"); 윗줄이랑 같음 1부터 시작이라 인덱스2면 nth-child(3)
+    
+            $("li:even").css("color","blue");
+            $("li:odd").css("color","green");
+        });
+    });
+    </script>
+</head>
+<body>
+    <ul>
+        <li>항목1</li>
+        <li>항목2</li>
+        <li>항목3</li>
+    </ul>
+    <button>필터링</button>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        //인덱스가 짝수인 요소
+        $(function(){
+            $("button#Button").on("click",function(){
+                $("li").filter(":even").css({"border":"2px solid green"});
+                //$("li").not(":lt(2)") 인덱스2보다 작지 않은것
+            });
+        });
+    </script>
+    <script>
+    //
+    $(function(){
+        $("button#button1").on("click", function(){
+            $("li").filter(function() {
+                return $(this).data("value") % 2 === 0;
+            }).css({"border": "2px solid blue"}); 
+            });
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li data-value="1">첫 번째 아이템</li>
+        <li data-value="2">두 번째 아이템</li>
+        <li data-value="3">세 번째 아이템</li>
+        <li data-value="4">네 번째 아이템</li>
+    </ul>
+    <p>제이쿼리에서 인덱스는 언제나 0부터 시작</p>
+    <button id="Button">인덱스가 짝수인 요소</button>
+    <button id="button1">인덱스가 홀수인 요소</button>
+</body>
+</html>

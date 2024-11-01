@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>숫자맞추기 게임(1~100)</h1>
+    <h2 id="attempt" style="color:red;">❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</h2>
+    <input type="text" id="dataInput" placeholder="1부터 100까지 숫자입력" min="1" max="100">
+    <input type="submit" onclick="number()" value="확인">
+    <div id="number"></div>   <!-- innerHTML은 div의 id에서 받아오기 -->
+
+    <script>
+        const randomNum=Math.floor(Math.random()*100)+1;
+        const result = document.getElementById('number');  
+
+        let attempts=document.getElementById('attempt').innerHTML;
+        let life=10;
+
+        function updateHearts() {
+            const hearts = '❤️'.repeat(life); // 남은 생명에 따라 하트를 반복 생성
+            document.getElementById('attempt').innerHTML = hearts; // 하트를 업데이트
+        }
+
+        function number(){
+            const userInput = parseInt(document.getElementById('dataInput').value);
+            
+            if(userInput>=1 && userInput<=100){
+                if(userInput===randomNum){
+                    result.innerHTML="정답입니다😊";  //이모티콘은 윈도우. 같이 누르기
+              
+            } else if (userInput<randomNum){
+                        life--;
+                        result.innerHTML="입력한 숫자보다 큰 값입니다.";
+                    } else {
+                        life--;
+                        result.innerHTML="입력한 숫자보다 작은 값입니다.";
+                    }
+                    document.getElementById('dataInput').value ='';
+                    updateHearts(); 
+                }
+            }
+
+            if(attempts==0) document.getElementById('number').innerHTML(`실패했습니다. 정답은 ${randomNum}이었습니다.`);
+            
+            console.log(randomNum);
+            console.log(document.getElementById('dataInput').value);
+    </script>
+</body>
+</html>

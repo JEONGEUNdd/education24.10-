@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function(){
+            $('input').on('focus',function(){
+                $(this).css('background-color','yellow');
+            }).on('blur',function(){
+                $(this).css('background-color','');
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" placeholder="여기에 입력하세요">
+    <input type="text" placeholder="또 다른 입력">
+</body>
+</html>

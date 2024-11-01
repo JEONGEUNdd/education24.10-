@@ -1,0 +1,46 @@
+<input type="text" id="dataInput">
+<button id="index" onclick="index()">정보 보기</button>
+
+<div id="result"></div>
+<script>
+    const dim=[1,3,5,7,9];
+    console.log(dim[3]);  //7
+
+    const people=[
+        {"이름": "홍길동", "나이": 25, "도시":"서울"},
+        {"이름": "김영희", "나이": 40, "도시":"부산"},
+        {"이름": "이철수", "나이": 35, "도시":"대구"},
+    ];
+    // console.log(people);
+    // const firstPerson=people[0];
+    // console.log(firstPerson);
+    // console.log(firstPerson.도시);
+    // console.log(people[0].나이);  //25
+
+    // const hong={"이름": "홍길동", "나이":25, "도시":"서울"};
+    // console.log(hong.이름);   //홍길동
+
+
+    //////////////////////////////////
+
+    function index(){
+        
+        const dataInput=document.getElementById('dataInput').value;
+        let result="";
+        let found=false;
+
+        for (let i=0; i<people.length; i++){
+            if(people[i].이름===dataInput){
+                result+=`이름: ${people[i].이름}\n나이: ${people[i].나이}\n도시: ${people[i].도시}\n\n`; 
+                found=true;
+            }
+        }
+        if(!found){
+            result="해당 이름을 가진 사람이 없습니다.";
+        }
+        document.getElementById('result').textContent=result;
+    };
+   
+
+   
+</script>

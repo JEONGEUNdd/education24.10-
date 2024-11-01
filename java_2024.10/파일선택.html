@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 업로드</title>
+</head>
+<body>
+    <h2>프로필 사진</h2>
+    <img id="image1" src="/images/dog.jpg" width="300" height="300" alt="프로필 사진">
+    <h3>사진 선택</h3>
+    <button id="button1">파일 선택</button>
+    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+    
+    <script>
+        const button1 = document.querySelector('#button1');
+        const fileInput = document.querySelector('#fileInput');
+        const image1 = document.querySelector('#image1');
+
+        // 버튼 클릭 시 파일 선택 창 열기
+        button1.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // 파일 선택 시 이미지 변경
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    image1.src = e.target.result; 
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

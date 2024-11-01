@@ -1,0 +1,33 @@
+<!-- 
+ getElementsByTagName('input'):input 태그 이름을 가진 모든 요소를 가져옴 
+ addEventListener('click',function(){~   :한 요소에 여러 개의 click 핸들러를 추가 
+ querySelector('.classname'), querySelector("#idname")  getElementById랑 같은 기능인데 querySelector는 id나 class 다 불러오기 가능
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>getElementByTagName예제</h1>
+    <input type="text" placeholder="첫 번째 텍스트 입력">
+    <input type="text" placeholder="두 번째 텍스트 입력">
+    <button id="showTagButton">값 표시</button>
+    <h2 id="tagOutput"></h2>
+
+    <script>
+        const tagOutput=document.getElementById('tagOutput');
+        document.getElementById('showTagButton').addEventListener('click',function(){
+            const inputs=document.getElementsByTagName('input');
+            let combinedValue='';
+            for (let input of inputs){
+                combinedValue+=input.value+'\n';
+            }
+            tagOutput.textContent='입력한 텍스트: ' +combinedValue.trim();
+        });
+
+    </script>
+</body>
+</html>

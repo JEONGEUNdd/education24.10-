@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>달력 생성기</title>
+    <style>
+        table {
+            border-collapse: collapse; 
+            width: 600px; 
+            height: 600px; 
+        }
+        th {
+            background-color: rgb(203, 231, 230);
+            color: black; 
+            text-align: center; 
+            border: 1px solid black;
+            height: 80px; /* 요일 헤더 */
+            font-size: 24px; 
+        }
+        td {
+            border: 1px solid black;
+            height: 80px; 
+            text-align: center; 
+            font-size: 20px;
+        }
+        .button-container {
+            margin-bottom: 20px; */
+        }
+        .month-year {
+            text-align: left; 
+            font-size: 35px;
+            margin-bottom: 10px; 
+        }
+    
+    </style>
+</head>
+<body>
+    <h1>달력 생성기</h1>
+
+    <div class="button-container">
+        <button id="prevMonth">이전 달</button>
+        <button id="nextMonth">다음 달</button>
+    </div>
+    
+    <div class="month-year" id="monthYear"></div> <!-- 월과 연도를 표시할 div -->
+
+    <div id="calendar"></div>
+
+    <script>
+        let currentYear = new Date().getFullYear(); 
+        let currentMonth = new Date().getMonth(); 
+        
+        function renderCalendar() {
+            const now = new Date(currentYear, currentMonth);
+            const year = now.getFullYear();
+            const month = now.getMonth();
+            const daysInMonth = new Date(year, month + 1, 0).getDate(); // 현재 월의 날짜 수
+            const firstDay = new Date(year, month, 1);
+            const firstDayOfWeek = firstDay.getDay(); // 현재 월의 첫 번째 날의 요일
+            const lastDay = new Date(year, month, daysInMonth);
+            const lastDayOfWeek = lastDay.getDay();
+
+            let calendar = '<table><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>';
+            let currentDay = 1;
+
+            // 첫 번째 주 빈칸 추가
+            calendar += '<tr>';
+            for (let i = 0; i < firstDayOfWeek; i++) {
+                calendar += '<td></td>'; 
+            }
+
+            // 날짜
+            while (currentDay <= daysInMonth) {
+                if ((currentDay + firstDayOfWeek - 1) % 7 === 0 && currentDay !== 1) {
+                    calendar += '</tr><tr>'; // 새로운 주 시작
+                }
+                calendar += `<td>${currentDay}</td>`;
+                currentDay++;
+            }
+
+            // 마지막 주 빈칸 추가
+            for (let i = lastDayOfWeek + 1; i < 7; i++) {
+                calendar += '<td></td>';
+            }
+
+            calendar += '</tr></table>';
+            document.getElementById('calendar').innerHTML = calendar;
+
+            // 월과 연도 업데이트
+            document.getElementById('monthYear').innerText = `${year}년 ${month + 1}월`; // 월은 0부터 시작하므로 +1
+        }
+
+        // 이전 달 버튼 클릭 이벤트
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            currentMonth--; 
+            if (currentMonth < 0) { 
+                currentMonth = 11; // 12월
+                currentYear--; 
+            }
+            renderCalendar(); 
+        });
+
+        // 다음 달 버튼 클릭 이벤트
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            currentMonth++; 
+            if (currentMonth > 11) { 
+                currentMonth = 0; // 1월
+                currentYear++; 
+            }
+            renderCalendar(); 
+        });
+
+        // 초기 달력 렌더링
+        renderCalendar();
+    </script>
+</body>
+</html>

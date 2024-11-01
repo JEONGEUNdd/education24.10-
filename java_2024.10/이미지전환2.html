@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 변경</title>
+    <style>
+        #apple1, #apple2 {
+            width: 300px;
+            height: 300px;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>이미지 변경</h2>
+
+    <button id="button1">햐양이</button>
+    <img id="apple1" src="/images/dog.jpg">
+    
+    <button id="button2">누렁이</button>
+
+    <div class="image"></div>
+    
+    <script>
+        const button1 = document.querySelector('#button1');
+        const button2 = document.querySelector('#button2');
+        const apple1 = document.querySelector('#apple1');
+        
+        button1.addEventListener('click', () => {
+            apple1.src = "/images/dog.jpg";  
+        });
+
+        button2.addEventListener('click', () => {
+             apple1.src = "/images/dog2.jpg"
+        });
+    </script>
+</body>
+</html>
