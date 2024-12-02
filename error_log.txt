@@ -1,0 +1,2 @@
+2024-11-14 12:48:59.339856-FileNotFoundError - [Errno 2] No such file or directory: '아무거나유.txt'
+2024-11-14 12:49:13.398078-FileNotFoundError - [Errno 2] No such file or directory: '아무거나유.txt'
