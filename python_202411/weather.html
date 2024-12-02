@@ -1,0 +1,87 @@
+<!-- http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=LOcFZiRnngW%2BKKKcDEvoXf0%2FUE6lT9ZtulTjTlXJEmW0RJVFs8%2B1JG1rPjF1hJWF2PZsqyWTTLfMqB1coeq9TA%3D%3D&pageNo=1&numOfRows=1000&dataType=JSON&base_date=20241104&base_time=0500&nx=60&ny=127 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <style>
+    #weather-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #weather-table th, #weather-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>날씨정보</h1>
+    <div id="CDate"></div>
+    <div id="weather-data"></div>
+</div>
+
+    <script>
+        $(function(){
+        const serviceKey='LOcFZiRnngW%2BKKKcDEvoXf0%2FUE6lT9ZtulTjTlXJEmW0RJVFs8%2B1JG1rPjF1hJWF2PZsqyWTTLfMqB1coeq9TA%3D%3D';
+        const base_date=new Date().toISOString().slice(0,10).replace(/-/g,"");  //20241104
+        const base_time="0500"
+        const nx=60;
+        const ny=127
+
+        $.ajax({
+                url:`http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${serviceKey}&pageNo=1&numOfRows=1000&dataType=JSON&base_date=${base_date}&base_time=${base_time}&nx=${nx}&ny=${ny}`,
+        type:"GET",
+        dataType:"json",
+        success:function(data){
+            console.log(data);
+            const items=data.response.body.items.item;
+            let weatherData="<table id='weather-table'><tr><th>시간</th><th>날씨</th><th>기온</th><th>강수확률</th></tr>";
+                let sts=0;
+                let skyStatus,fv1,fv2;
+
+                items.forEach(item=>{
+                    if(item.category==="POP"){
+                        fv1=item.fcstValue||"";
+                        sts++;
+                    } else if(item.category==="TMP"){
+                        fv2=item.fcstValue||"";
+                        sts++;
+                    } else if(item.category==="SKY"){
+                        sts++;
+                        skyStatus=item.fcstValue||"";
+                        switch(item.fcstValue){
+                            case "1":skyStatus="맑음";break;
+                            case "3":skyStatus="구름많음";break;
+                            case "4":skyStatus="흐림";break;
+                            default:skyStatus="정보없음"
+                        }
+                }
+            if(sts==3){
+                console.log(sts);
+                weatherData+=`<tr><td>${item.fcstDate}${item.fcstTime}</td><td>${skyStatus}</td><td>${fv2}℃</td><td>${fv1}%</td></tr>`;
+                sts=0;
+            }
+        });
+
+        weatherData+="</table>";
+        $("#weather-data").html(weatherData);
+    },
+    error:function(xhr,status,error){
+                    console.error('API 호출 실패:' , error);
+                    alert('데이터를 불러오는데 실패했습니다.');
+                }
+            })
+        });
+
+    </script>        
+</body>
+</html>

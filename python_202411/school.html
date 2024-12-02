@@ -1,0 +1,159 @@
+<!--  LOcFZiRnngW%2BKKKcDEvoXf0%2FUE6lT9ZtulTjTlXJEmW0RJVFs8%2B1JG1rPjF1hJWF2PZsqyWTTLfMqB1coeq9TA%3D%3D
+ 카카오 f4dba949864a7e654d7f030505bfddf8-->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f4dba949864a7e654d7f030505bfddf8" data-cookieless="true"></script>
+ </head>
+ <body>
+    <div class="container">
+        <h1>전국 초중등학교 위치정보</h1>
+      
+        <table id="schoolTable">
+            <thead>
+                <tr>
+                    <th>학교명</th>
+                    <th>학교급구분</th>
+                    <th>설립일자</th>
+                    <th>소재지</th>
+                    <th>설립형태</th>
+                    <th>위도</th>
+                    <th>경도</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        let map;
+        let markers = [];
+        let overlays = [];
+
+        document.addEventListener('DOMContentLoaded', initializeMap);
+
+        function initializeMap() {
+            kakao.maps.load(function () {
+                const container = document.getElementById('map');
+                const options = {
+                    center: new kakao.maps.LatLng(36.5, 127.5),
+                    level: 7 // 초기 줌 레벨 조정
+                };
+                map = new kakao.maps.Map(container, options);
+
+                // 지도 클릭 시 열려있는 오버레이 닫기
+                kakao.maps.event.addListener(map, 'click', function () {
+                    overlays.forEach(overlay => overlay.setMap(null));
+                });
+
+                loadSchoolData();
+            });
+        }
+
+        function loadSchoolData() {
+            const serviceKey = 'LOcFZiRnngW%2BKKKcDEvoXf0%2FUE6lT9ZtulTjTlXJEmW0RJVFs8%2B1JG1rPjF1hJWF2PZsqyWTTLfMqB1coeq9TA%3D%3D';
+            const apiUrl = 'http://api.data.go.kr/openapi/tn_pubr_public_elesch_mskul_lc_api';
+
+            $.ajax({
+                url: apiUrl,
+                type: 'GET',
+                data: {
+                    serviceKey: serviceKey,
+                    type: 'json',
+                    pageNo: '1',
+                    numOfRows: '100' // 데이터 개수 조정 가능
+                },
+                success: function (response) {
+                    const schools = response.response.body.items;
+
+                    // DataTable 초기화 전에 마커 생성
+                    schools.forEach(createMarker);
+
+                    $('#schoolTable').DataTable({
+                        data: schools,
+                        columns: [
+                            { data: 'schoolNm' },
+                            { data: 'schoolSe' },
+                            { data: 'fondDate' },
+                            { data: 'rdnmadr' },
+                            { data: 'fondType' },
+                            {
+                                data: null,
+                                render: function (data) {
+                                    return `<button class="view-map-btn" onclick="showSchoolOnMap('${data.latitude}', '${data.longitude}', '${data.schoolNm}')">지도보기</button>`;
+                                }
+                            }
+                        ],
+                        pageLength: 10,
+                        lengthMenu: [10, 25, 50, 100],
+                        order: [[0, 'asc']]
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error('API 호출 실패:', error);
+                    alert('데이터를 불러오는데 실패했습니다.');
+                }
+            });
+        }
+
+        function createMarker(school) {
+             if (!map) {
+                setTimeout(() => createMarker(school), 100); // 지도 로딩 대기
+                return;
+            }
+
+            const position = new kakao.maps.LatLng(school.latitude, school.longitude);
+            const marker = new kakao.maps.Marker({
+                position: position,
+                map: map
+            });
+
+            const content = `<div class="custom-overlay">
+                                <h3>${school.schoolNm}</h3>
+                                <p>주소: ${school.rdnmadr}</p>                                
+                            </div>`;
+
+            const overlay = new kakao.maps.CustomOverlay({
+                content: content,
+                position: position,
+                yAnchor: 1.5
+            });
+
+            overlays.push(overlay);
+
+            kakao.maps.event.addListener(marker, 'click', function () {
+                overlays.forEach(o => o.setMap(null));
+                overlay.setMap(map);
+            });
+
+            markers.push({ marker: marker, schoolName: school.schoolNm, overlay: overlay });
+        }
+
+
+        function showSchoolOnMap(latitude, longitude, schoolName) {
+            if (!map) return;
+
+            const moveLatLng = new kakao.maps.LatLng(latitude, longitude);
+            map.setCenter(moveLatLng);
+            map.setLevel(3); // 학교 위치로 이동 후 줌 레벨 조정
+
+            // 모든 오버레이 숨기기
+            overlays.forEach(overlay => overlay.setMap(null));
+
+            // 해당 학교의 오버레이만 표시
+            markers.forEach(item => {
+                if (item.schoolName === schoolName) {
+                    item.overlay.setMap(map);
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
