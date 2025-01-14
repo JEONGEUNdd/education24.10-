@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>작업 목록</title>
+    <style>
+        .task {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .high { color: red; }
+        .medium { color: orange; }
+        .low { color: green; }
+        .completed { text-decoration: line-through; }
+    </style>
+</head>
+<body>
+    <h1>작업 목록 📋</h1>
+
+    <div class="tasks">
+        {% for task in tasks %}
+            <div class="task {{ task.priority }} {{ 'completed' if task.get('status') == 'completed' }}">
+                <!-- 우선순위에 따른 이모지 표시 -->
+                {% if task.priority == 'high' %}
+                    🔥
+                {% elif task.priority == 'medium' %}
+                    ⚡
+                {% elif task.priority == 'low' %}
+                    💡
+                {% endif %}
+
+                <!-- 작업 제목 -->
+                {{ task.title }}
+
+                <!-- 상태에 따른 이모지 표시 -->
+                {% if task.get('status') == 'completed' %}
+                    ✅
+                {% endif %}
+
+                <!-- 첫 번째 항목 표시 -->
+                {% if loop.first %}
+                    🏆
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>범례:</p>
+        <ul>
+            <li>🔥 높은 우선순위</li>
+            <li>⚡ 중간 우선순위</li>
+            <li>💡 낮은 우선순위</li>
+            <li>✅ 완료된 작업</li>
+            <li>🏆 최상위 작업</li>
+        </ul>
+    </footer>
+</body>
+</html>
