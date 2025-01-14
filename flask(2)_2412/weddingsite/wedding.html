@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록</title>
+</head>
+<body>
+    <h1>방명록</h1>
+    <img src="{{ url_for('static', filename='weddingimages.jpg') }}">
+    <form method="POST",action="/append">
+        <input type="text" name="name" required>이름<br>
+        <textarea name="content" required rows="5">내용</textarea><br>
+        <button type="submit">등록</button>
+    </form>
+
+    <div id="notes">
+        {% for memo in memos %}
+        <div class="note">
+            <h3>{{memo.title}}</h3>
+            <p>{{memo.content}}</p>
+            <small>작성일: {{memo.regdate}}</small>
+        </div>
+        {% endfor %}
+</body>
+</html>

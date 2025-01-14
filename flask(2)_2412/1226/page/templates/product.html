@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}제품{% endblock %}
+
+{% block content %}
+<!-- product.html에 스타일 추가 -->
+<style>
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .product-card {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+    }
+</style>
+
+<div class="products-container">
+    <h1>제품 목록</h1>
+    <div class="product-grid">
+        
+        <div class="product-card">
+            <h3>제품1</h3>
+            <p>가격: 1000원</p>
+        </div>
+        
+        <div class="product-card">
+            <h3>제품2</h3>
+            <p>가격: 2000원</p>
+        </div>
+        
+        <div class="product-card">
+            <h3>제품3</h3>
+            <p>가격: 3000원</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

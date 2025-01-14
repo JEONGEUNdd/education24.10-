@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>설문조사 결과</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>설문조사 결과</h1>
+
+    {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    <th>응답 시간</th>
+                    <th>서비스 만족도</th>
+                    <th>추천 여부</th>
+                    <th>개선 제안</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.response_time }}</td>
+                        <td>{{ result.q0 }}</td>
+                        <td>{{ result.q1 }}</td>
+                        <td>{{ result.q2 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>아직 제출된 설문조사가 없습니다.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('survey') }}">설문조사 다시 작성하기</a>
+    
+</body>
+</html>

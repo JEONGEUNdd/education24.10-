@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록</title>
+    <style>
+        img {
+            width: 400px; /* 이미지 너비 */
+            height: 250px; /* 비율 유지 */
+            display: block; /* 블록으로 설정 */
+            margin: 0 auto; /* 가운데 정렬 */
+        }
+    
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+    
+        h1 {
+            margin: 20px 0;
+        }
+    
+        form {
+            margin: 20px auto;
+            width: 50%; /* 전체 화면의 50% 너비 */
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box; /* 크기 포함 */
+        }
+    
+        input[type="text"], textarea {
+            width: 100%; /* 입력 필드의 너비를 100%로 설정 */
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* 크기 포함 */
+        }
+    
+        textarea {
+            resize: none; /* 크기 조정 비활성화 */
+        }
+    
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    
+        button:hover {
+            background-color: #45a049;
+        }
+    
+        #notes {
+            margin-top: 20px;
+            width: 50%; /* 방명록 내용과 같은 너비로 설정 */
+            margin-left: auto;
+            margin-right: auto;
+            box-sizing: border-box; /* 크기 포함 */
+        }
+    
+        #notes h2 {
+            text-align: left;
+            margin-left: 10px;
+            font-size: 22px;
+            margin-bottom: 20px; /* 공간을 적당히 줍니다 */
+        }
+    
+        .note {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            box-sizing: border-box; /* 크기 포함 */
+        }
+    
+        .note h4 {
+            margin: 0;
+            color: #333;
+            display: inline-block;
+            font-size: 18px; /* 이름 크기 */
+        }
+    
+        .note small {
+            margin-left: 10px;
+            color: #888;
+            font-size: 12px; /* 작성일 크기 */
+        }
+    
+        .note h3 {
+            margin-top: 10px;
+            color: #555;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='weddingimages.jpg') }}">
+    <h1>방명록</h1>
+    <form method="POST",action="/append">
+        <input type="text" name="name" placeholder="이름" required><br>
+        <textarea name="content" placeholder="내용" required rows="5"></textarea><br>
+        <button type="submit">등록</button>
+    </form>
+
+    <div id="notes">
+        <h2>방명록 내용</h2>
+        {% for memo in memos %}
+        <div class="note">
+            <h4>{{ memo.name }}<small> (작성일: {{ memo.regdate }})</small></h4>
+            <h3>{{ memo.content }}</h3>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

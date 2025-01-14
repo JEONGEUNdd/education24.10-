@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>메모장</title>
+    <style>
+        .note {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .personal { background-color: #ffe6e6; }
+        .work { background-color: #e6ffe6; }
+        .study { background-color: #e6e6ff; }
+        input[type=text], textarea { width:400px; margin-bottom:2px;}
+    </style>
+</head>
+<body>
+    <h1>메모장</h1>
+    <form method="POST",action="/append">
+        <input type="text" name="title" placeholder="제목" required><br>
+        <textarea name="content" placeholder="내용" required rows="5"></textarea><br>
+        <select name="category">
+            <option value="personal">개인</option>
+            <option value="work">업무</option>
+            <option value="study">학습</option>
+        </select>
+        <button type="submit">저장</button>
+    </form>
+
+    <div id="notes">
+        {% for memo in memos %}
+        <div class="note {{memo.category}}">
+            <h3>{{memo.title}}</h3>
+            <p>{{memo.content}}</p>
+            <small>작성일: {{memo.regdate}}</small>
+            <a href="/delete/{{memo.id}}">삭제</a>
+        </div>
+        {% endfor %}
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 목록</title>
+    <style>
+        .completed{text-decoration: line-through; color:gray;}
+        .high{color:red;}
+        .medium{color:orange;}
+        .low{color:green;}
+
+    </style>
+</head>
+<body>
+    <form method="POST" action="/append">
+        <input type="text" name="title" placeholder="할 일" required>
+        <input type="date" name="due_date" required>
+        <select name="priority">
+            <option value="high">높음</option>
+            <option value="medium">보통</option>
+            <option value="low">낮음</option>
+        </select>
+        <button type="submit">추가</button>
+    </form>
+
+    <ul>
+        {% for todo in todos %}
+        <li class="{{'completed' if todo.completed}}">
+            <span class="{{todo.priority}}">{{todo.title}}</span>
+            (기한: {{todo.due_date}})
+            <a href="/toggle/{{loop.index0}}">
+                {{ '완료취소' if todo.completed else '완료'}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
