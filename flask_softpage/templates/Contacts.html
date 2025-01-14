@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block content %}
+<!-- content -->
+<section class="col1">
+    <h2 class="pad_bot1">Miscellaneous</h2>
+    <p class="pad_top1 pad_bot1">
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan-
+        tium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+    </p>
+    <p class="pad_bot1">
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia conse-
+        quuntur magni dolores eos qui ratione volupta- tem sequi nesciunt. Neque porro quisquam est,
+        qui dolorem ipsum quia dolor sit amet, con- sectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+    </p>
+    Ut enim ad minima veniam, quis nostrum exerci- tationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil.
+</section>
+
+<section class="col2">
+    <h2 class="pad_bot1">Contact Form</h2>
+  
+    <form id="ContactForm">
+        <div>
+            <div class="wrapper">
+                <span>Your Name:</span>
+                <div class="bg"><input type="text" class="input" name="name" required/></div>
+            </div>
+            <div class="wrapper">
+                <span>Your E-mail:</span>
+                <div class="bg"><input type="email" class="input" name="email" required></div>
+            </div>
+            <div class="textarea_box">
+                <span>Your Message:</span>
+                <div class="bg"><textarea name="message" cols="1" rows="1" required></textarea></div>
+            </div>
+            <button type="button" class="button" disabled>Send</button> <!-- Submit 버튼을 비활성화 -->
+            <button type="reset" class="button">Clear</button>
+        </div>
+    </form>
+</section>
+
+<!-- content2 -->
+<div class="body2">
+    <div class="main">
+        <article id="content2">
+            <section class="col1">
+                <h3>Newsletter</h3>
+                <form id="newsletter">
+                    <div>
+                        <div class="bg">
+                            <input class="input" type="text" value="Type Your Email Here"
+                                   onblur="if(this.value=='') this.value='Type Your Email Here'"
+                                   onfocus="if(this.value=='Type Your Email Here') this.value=''">
+                        </div>
+                        <a href="#" class="button" onClick="document.getElementById('newsletter').submit()">Subscribe</a>
+                    </div>
+                </form>
+            </section>
+        </article>
+    </div>
+</div>
+
+{% endblock %}

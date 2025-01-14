@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Support 페이지{% endblock %}
+
+{% block content %}
+<div class="body1">
+    <div class="main">
+        <!-- header -->
+        <article id="content">
+            <section class="col1">
+                <h2 class="pad_bot1">Online Help</h2>
+                <p class="color1 pad_top1 pad_bot3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                <div class="wrapper">
+                    <figure class="left marg_right1"><img src="{{ url_for('static', filename='images/page3_img1.jpg') }}" alt=""></figure>
+                    <p class="pad_top1">Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.</p>
+                <a href="#" class="button">Online Chat</a>
+            </section>
+            <section class="col2">
+                <h2 class="pad_bot1">Frequently Asked Questions</h2>
+                <p class="pad_bot1 pad_top1"><strong class="color1">How do I install?</strong></p>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                <p class="pad_bot1"><strong class="color1">Can I install it on multiple conputers?</strong></p>
+                <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+                <p class="pad_bot1"><strong class="color1">I keep getting an error when I try to download?</strong></p>
+                <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis.</p>
+                <p class="pad_bot1"><strong class="color1">How do I update the software?</strong></p>
+                Voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.
+            </section>
+        </article>
+    </div>
+</div>
+<div class="body2">
+    <div class="main">
+        <article id="content2">
+            <section class="col1">
+                <h3>Newsletter</h3>
+                <form id="newsletter">
+                    <div>
+                        <div class="bg">
+                            <input class="input" type="text" value="Type Your Email Here" onblur="if(this.value=='') this.value='Type Your Email Here'" onFocus="if(this.value =='Type Your Email Here' ) this.value=''">
+                        </div>
+                        <a href="#" class="button" onClick="document.getElementById('ContactForm').submit()">Subscribe</a>
+                    </div>
+                </form>
+            </section>
+        </article>
+    </div>
+</div>
+{% endblock %}
