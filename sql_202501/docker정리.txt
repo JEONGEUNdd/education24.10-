@@ -1,0 +1,29 @@
+####도커
+
+
+#cmd창에서
+docker ps a
+docker stop (컨테이너ID)
+docker rm (컨테이너ID)
+docker
+"C:\Temp\mariadb-data"   #파일 저장 경로
+
+docker run --name mariadb-container -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=board_db2 -p 3306:3306 -v C:\Temp\mariadb-data:/var/lib/mysql -d mariadb:10.6
+
+docker exec -it mariadb-container /bin/bash     #컨테이너쉘에 접속
+mysql -uroot -p
+use mysql;
+
+
+#비주얼스튜디오코드 터미널에서
+docker build -t board2 .
+
+
+docker run --name board2_container -v %cd%:/app -p 8001:8000 board2   #주소 포트 8001로 돌려야함
+
+docker tag board2 wjddms/board2
+docker push wjddms/board2    #도커허브로 업로드
+docker pull wjddms/board2
+
+
+docker run --name board2_container -v $(pwd):/app -p 8001:8000 board2

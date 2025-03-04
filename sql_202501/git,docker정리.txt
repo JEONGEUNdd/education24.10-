@@ -1,0 +1,14 @@
+##깃허브에서 가져오기
+#winscp putty에서
+cd /home/ubuntu/flask_app/   깃허브에 파일 가져오고 싶은 경로 열기
+git clone https://github.com/JEONGEUNdd/example.git
+docker pull mariadb:10.6
+
+#도커
+cd /home/ubuntu/flask_app/example
+docker build -t board3 .      ##도커에 이미지
+
+docker run --name board3_container -v %cd%:/app -p 8001:8000 board3   #도커에 컨테이너생성, 포트 8001
+
+#home/ubuntu경로에 mariadb데이터 연결
+docker run --name mariadb-container1 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=board_db3 -p 3306:3306 -v home/ubuntu/mariadb-data:/var/lib/mysql -d mariadb:10.6     

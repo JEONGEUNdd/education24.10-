@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>직원 정보 보기</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>직원 정보</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{employee.name}}</h5>
+                <p class="card-text">
+                    <strong>ID:</strong> 7<br>
+                    <strong>이메일:</strong> {{employee.email}}<br>
+                    <strong>부서:</strong> {{employee.department}}<br>
+                    <strong>급여:</strong> {{employee.salary}}<br>
+                    <strong>입사일:</strong> {{employee.hire_date}}
+                </p>
+                <a href="{{url_for('edit_employee',id=employee.id)}}" class="btn btn-warning">수정</a>
+                <a href="{{url_for('index')}}" class="btn btn-secondary">목록으로</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

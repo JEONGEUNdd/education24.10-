@@ -1,0 +1,123 @@
+ubuntu설정 네트워크에서 NAT이 아니라 어댑터에 브리지로 변경해야함.
+sudo apt update리
+sudo apt upgrade
+sudo apt install mysql-server
+sudo systemc
+start mysql
+sudo systemctl status mysql
+sudo apt install mariadb-server
+sudo mysql_secure_installation    #Remove anonymous users? [Y/n] Y
+
+sudo mysql -u root -p하면
+mariaDB접속-->use mysql
+select host, user, password from user;
+
+create user 'sejong'@'%' identified by '1234'  #외부에서도 접속가능
+GRANT ALL PRIVILEGES ON *.* TO 'sejong'@'%;
+
+CREATE USER 'sejong'@'localhost' IDENTIFIED BY '1234';  
+GRANT ALL PRIVILEGES ON *.* TO 'sejong'@'localhost';
+
+FLUSH PRIVILEGES;
+show GRANTS FOR 'sejong'@'localhost';
+FLUSH PRIVILEGES;
+sudo apt install openssh-server
+sudo systemctl start ssh
+sudo systemctl status ssh
+
+sudo systemctl enable ssh
+
+###WinsSCP열어서 새사이트만들기 ubuntu에서 ip a 에서 봤던 주소 입력
+
+#파이썬설치
+mkdir ~/flask_app
+cd ~/flask_app
+python3 -m venv venv
+source venv/bin/activate
+
+pip install flask
+pip install mysql-connector-python
+
+sejong@ubuntu:~/flask_app$ source venv/bin/activate
+(venv) sejong@ubuntu:~/flask_app$ python3 app.py
+
+
+#putty에서
+sejong@ubuntu:~$ cd f*
+sejong@ubuntu:~/flask_app$ cd e*
+sejong@ubuntu:~/flask_app/employee_system$
+
+sudo nano /etc/systemd/system/flask_app.service
+
+[Unit]
+Description=Employee Manager Application
+After=network.target
+
+[Service]
+User=sejong
+WorkingDirectory=/home/sejong/flask_app/employee_system/
+Environment="PATH=/home/sejong/flask_app/venv/bin"
+ExecStart=/home/sejong/flask_app/venv/bin/python app.py
+AmbientCapabilities=CAP_NET_BIND_SERVICE 
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
+sudo systemctl start flask_app
+sudo systemctl status flask_app
+sudo systemctl enable flask_apppip 
+
+pip install gunicornpip
+pip install gevent
+
+sudo nano /etc/systemd/system/gunicorn_app.service
+
+[Unit]
+Description=Flask Gunicorn Application
+After=network.target
+
+[Service]
+User=sejong
+Group=www-data
+WorkingDirectory=/home/sejong/flask_app/employee_system
+Environment="PATH=/home/sejong/flask_app/venv/bin"
+ExecStart=/home/sejong/flask_app/venv/bin/gunicorn --workers 6 --bind 0.0.0.0:80 --timeout 60 app:app
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+#app:app에서 앞에 app은 파일명 app.py, 뒤에 app은 코드에서 객체
+
+sudo systemctl disable flask_app
+sudo systemctl start gunicorn_app
+
+[Unit]
+Description=Flask Gunicorn Application
+After=network.target
+
+[Service]
+User=sejong
+Group=www-data
+WorkingDirectory=/home/sejong/flask_app/employee_system
+Environment="PATH=/home/sejong/flask_app/venv/bin"
+ExecStart=/home/sejong/flask_app/venv/bin/gunicorn --workers 6 --bind 0.0.0.0:80 --timeout 60 app:app
+#ExecStart=/home/happyall/flask_app/venv/bin/gunicorn --worker-class gevent --workers 6 --bind 0.0.0.0:80 --timeout 30 --worker-connections 1000 app:app
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+######ubuntu한국시간 설정
+timedatectl
+sudo timedatectl set-timezone Asia/Seoul
+sudo systemctl restart mariadb
+select now()   #sql에서 실행
+
+
+git config --global user.name "JEONGEUNdd"
+git config --global user.email "wjddms3416@naver.com"
