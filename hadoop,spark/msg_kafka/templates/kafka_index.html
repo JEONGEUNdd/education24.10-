@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>작업 모니터링(kafka)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>작업 메시지 모니터링(kafka)</h1>
+    <p>
+        <a href="#" onclick="showMessages('normal')">
+            정상 메시지 수: <span id="normal-count">{{ normal_count }}</span>
+        </a>
+    </p>
+    <p>
+        <a href="#" onclick="showMessages('abnormal')">
+            비정상 메시지 수: <span id="abnormal-count">{{ abnormal_count }}</span>
+        </a>
+    </p>
+
+    <div id="message-box" style="margin-top:20px; max-height:300px; overflow:auto; border:1px solid #ccc; padding:10px;"></div>
+    <script>
+        function showMessages(type) {
+            $.ajax({
+                url: `/messages/${type}`,
+                type: 'GET',
+                success: function(res) {
+                    let html = `<h3>${type === 'normal' ? '정상 메시지' : '비정상 메시지'}</h3><ul>`;
+                    res.forEach(msg => {
+                        const color = msg.status === 1 ? 'red' : 'black';
+                        html += `<li style="color:${color}">${JSON.stringify(msg)}</li>`;
+                    });
+                    html += '</ul>';
+                    $('#message-box').html(html);
+
+                    // 보여줄 메시지 최대 50개
+                    if ($('#message-list li').length > 50) {
+                        $('#message-list li:last').remove();
+                    }
+                }
+            });
+        }
+
+        //일정주기 메세지 폴링 방식 :::::::::: 간단하지만 실시간성과 효율성 면에서 웹소켓이 더 적합
+        function updateCounts() {
+            $.ajax({
+                url: '/messages_count',
+                type: 'GET',
+                cache: false,  // 캐시 방지 옵션 추가
+                success: function(res) {
+                    $('#normal-count').text(res.normal);
+                    $('#abnormal-count').text(res.abnormal);
+                }
+            });
+        }
+
+        // 최초 1회 실행
+        updateCounts();
+
+        // 5초마다 카운트 자동 업데이트
+        setInterval(updateCounts, 5000);
+    </script>
+
+<script>
+    // async function showMessages(type) {
+    //     const res = await fetch(`/messages/${type}`);
+    //     const data = await res.json();
+    //     let html = `<h3>${type === 'normal' ? '정상 메시지' : '비정상 메시지'}</h3><ul>`;
+    //     data.forEach(msg => {
+    //         html += `<li>${JSON.stringify(msg)}</li>`;
+    //     });
+    //     html += '</ul>';
+    //     document.getElementById('message-box').innerHTML = html;
+    // }
+</script>
+</body>
+</html>
+
+

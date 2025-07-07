@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>작업 모니터링 (kafka + websocket)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+    <style>
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .badge.abnormal {
+            background-color: #dc3545; /* 붉은색 */
+        }
+    </style>
+</head>
+<body>
+    <h1>작업 메시지 모니터링 (kafka + websocket)</h1>
+    <p>
+        <span class="tooltip">
+            정상 메시지 수: <span class="badge" id="normal-count">{{ normal_count }}</span>
+        </span>
+    </p>
+    <p>
+        <span class="tooltip">
+            비정상 메시지 수: <span class="badge abnormal" id="abnormal-count">{{ abnormal_count }}</span>
+        </span>
+    </p>
+
+    <div id="message-box" style="margin-top:20px; max-height:300px; overflow:auto; border:1px solid #ccc; padding:10px;">
+        <h3>최근 메시지</h3>
+        <ul id="message-list"></ul>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // 서버에 웹소켓 연결
+            const socket = io();
+
+            // 서버가 보내는 메시지 수 업데이트 받기
+            socket.on('MY_CMD_MSG_UPDATE', function(res) {
+                $('#normal-count').text(res.normal_count);
+                $('#abnormal-count').text(res.abnormal_count);
+
+                // 새 메시지를 리스트에 추가
+                const msg = res.new_message;
+                const color = msg.status === 1 ? 'red' : 'black';  // status가 1이면 빨간색
+                const listItem = $('<li></li>')
+                .text(JSON.stringify(msg))
+                .css('color', color);
+
+                $('#message-list').prepend(listItem);
+
+                // 보여줄 메시지 최대 50개
+                if ($('#message-list li').length > 50) {
+                    $('#message-list li:last').remove();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
